@@ -1,0 +1,3 @@
+Menu:
+ver 1.0: - Tạo grid view chứa ảnh, tên và giá của thức uống.
+		 - Sử dụng glide để load ảnh
