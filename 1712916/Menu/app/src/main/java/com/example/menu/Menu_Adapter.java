@@ -11,19 +11,22 @@ import android.widget.TextView;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.signature.ObjectKey;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Menu_Adapter extends BaseAdapter {
 
     private Context context;
     private int layout;
-    private java.util.List<Menu_Item> List;
+    private java.util.List<Drink_Item> List;
 
-    public Menu_Adapter(Context context, int layout, java.util.List<Menu_Item> list) {
+    public Menu_Adapter(Context context, int layout, java.util.List<Drink_Item> list) {
         this.context = context;
         this.layout = layout;
         List = list;
     }
+
+
 
     @Override
     public int getCount() {
@@ -54,9 +57,9 @@ public class Menu_Adapter extends BaseAdapter {
             view=inflater.inflate(layout,null);
             holder=new ViewHolder();
             //ánh xạ view
-            holder.ten=(TextView)view.findViewById(R.id.tenMon);
+            holder.ten=(TextView)view.findViewById(R.id.ten_mon);
             holder.gia=(TextView)view.findViewById(R.id.giaMon);
-            holder.anh=(ImageView)view.findViewById(R.id.anhMon);
+            holder.anh=(ImageView)view.findViewById(R.id.anh_mon);
             view.setTag(holder);
         }
         else
@@ -66,7 +69,7 @@ public class Menu_Adapter extends BaseAdapter {
 
 
         //gán giá trị
-        Menu_Item itemRow=List.get(i);
+        Drink_Item itemRow=List.get(i);
         Glide.with(context)
                 .load(itemRow.getAnh())
                 .signature(new ObjectKey(String.valueOf(System.currentTimeMillis())))
@@ -75,4 +78,7 @@ public class Menu_Adapter extends BaseAdapter {
         holder.gia.setText(itemRow.getGia());
         return view;
     }
+
+
+
 }

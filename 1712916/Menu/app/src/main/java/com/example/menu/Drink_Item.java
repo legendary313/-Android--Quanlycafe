@@ -1,11 +1,11 @@
 package com.example.menu;
 
-public class Menu_Item {
+public class Drink_Item {
     private String ten;
     private String gia;
     private int anh;
 
-    public Menu_Item(String ten, String gia, int anh) {
+    public Drink_Item(String ten, String gia, int anh) {
         this.ten = ten;
         this.gia = gia;
         this.anh = anh;
