@@ -7,3 +7,16 @@ ver 1.1: - Tạo category cho Menu dùng pagerview
 		- Menu_Adapter -> gridview Adapter
 		-Menu_Fragment chưa grid view của 1 loại menu
 		-Menu_Viewpager_Adapter ->Adapter cho pagerview
+
+
+ListOrder:
+ver 1.0: - Tạo listView bằng RecyclerView (Chỉ mới hiển thị)
+	 - Đã thay đổi giá trị gia từ string -> int trong Drink_Item
+
+(Dự định kế tiếp)ver 1.1: - Thêm Order (Cập nhật tổng tiền)
+		          - update load ImageView bằng glide
+			  - Sửa, xóa item trong order (Tạo một popup để thay đổi)
+			  
+
+		 
+				
