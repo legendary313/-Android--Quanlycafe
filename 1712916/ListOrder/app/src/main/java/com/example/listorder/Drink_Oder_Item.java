@@ -46,7 +46,7 @@ public class Drink_Oder_Item extends Drink_Item{
         anhs.add(R.drawable.nuoc_9);
 
         for(int i=0;i<n;i++){
-            Drink_Oder_Item item=new Drink_Oder_Item("Nước "+i,((rand.nextInt(3)+1)*20),anhs.get(rand.nextInt(anhs.size())),rand.nextInt(10)+1,"Ghi chú: ");
+            Drink_Oder_Item item=new Drink_Oder_Item("Nước "+i,((rand.nextInt(3)+1)*20),anhs.get(rand.nextInt(anhs.size())),rand.nextInt(10)+1,"");
             items.add(item);
         }
 
