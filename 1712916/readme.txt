@@ -17,7 +17,11 @@ ver 1.1: - Thêm Order (Cập nhật tổng tiền)
 		          - update load ImageView bằng glide
 			  - Sửa, xóa item trong order (Tạo một popup để thay đổi)
 
-(Dự định kế tiếp) Ghép menu vs listorder
+Order:
+ver 1.0:  - Kết hợp menu vs listoder
+	  - Thay đổi menu thành recylerview
+		
+
 			  
 
 		 
