@@ -1,6 +1,8 @@
 package com.example.order;
 
 import android.content.Context;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -67,6 +69,10 @@ public class Menu_Fragment extends Fragment implements Menu_Adapter.OnItemOrderC
 
     @Override
     public void onLongClick(int position) {
+        ItemProfileDialog itemProfileDialog=new ItemProfileDialog(getContext(),list.get(position));
+        itemProfileDialog.setUp();
+        itemProfileDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+        itemProfileDialog.show();
 
     }
 }

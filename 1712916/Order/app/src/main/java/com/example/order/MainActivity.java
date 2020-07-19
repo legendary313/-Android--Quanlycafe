@@ -109,8 +109,8 @@ public class MainActivity extends AppCompatActivity {
         ArrayList<Drink_Item> dsNuocUong2;
         ArrayList<Drink_Item> dsNuocUong;
         dsNuocUong=new ArrayList<>();
-        dsNuocUong.add(new Drink_Item("So da",21000,R.drawable.nuoc_1));
-        dsNuocUong.add(new Drink_Item("Nước cam",22000,R.drawable.nuoc_2));
+        dsNuocUong.add(new Drink_Item("So da",21000,R.drawable.nuoc_1,"So da là nước được làm từ nước khoáng,So da là nước được làm từ nước khoáng,So da là nước được làm từ nước khoáng,So da là nước được làm từ nước khoáng"));
+        dsNuocUong.add(new Drink_Item("Nước cam",22000,R.drawable.nuoc_2,"So da là nước được làm từ nước khoáng"));
 //        dsNuocUong.add(new Menu_Item("Nước uống 1","20 000 đ",R.drawable.nuoc_3));
 //        dsNuocUong.add(new Menu_Item("Nước uống 1","20 000 đ",R.drawable.nuoc_4));
 //        dsNuocUong.add(new Menu_Item("Nước uống 1","20 000 đ",R.drawable.nuoc_5));
@@ -121,15 +121,15 @@ public class MainActivity extends AppCompatActivity {
 
 
         dsNuocUong2=new ArrayList<>();
-        dsNuocUong2.add(new Drink_Item("So da",23000,R.drawable.nuoc_1));
-        dsNuocUong2.add(new Drink_Item("Nước cam",24000,R.drawable.nuoc_2));
-        dsNuocUong2.add(new Drink_Item("Trà đào",25000,R.drawable.nuoc_3));
-        dsNuocUong2.add(new Drink_Item("Nước ép táo",20000,R.drawable.nuoc_4));
-        dsNuocUong2.add(new Drink_Item("Con sư tử",20000,R.drawable.nuoc_5));
-        dsNuocUong2.add(new Drink_Item("Dừa trái",20000,R.drawable.nuoc_6));
-        dsNuocUong2.add(new Drink_Item("Nước ép dưa hấu",20000,R.drawable.nuoc_7));
-        dsNuocUong2.add(new Drink_Item("Nước cam ép",20000,R.drawable.nuoc_8));
-        dsNuocUong2.add(new Drink_Item("Trà đá",20000,R.drawable.nuoc_9));
+        dsNuocUong2.add(new Drink_Item("So da",23000,R.drawable.nuoc_1,"So da là nước được làm từ nước khoáng"));
+        dsNuocUong2.add(new Drink_Item("Nước cam",24000,R.drawable.nuoc_2,"Nước cam là nước ép từ cam tự nhiên"));
+        dsNuocUong2.add(new Drink_Item("Trà đào",25000,R.drawable.nuoc_3,"Trà đào ko có đào nào"));
+        dsNuocUong2.add(new Drink_Item("Nước ép táo",20000,R.drawable.nuoc_4,"Nước ép táo là nước ép từ quả táo màu đỏ, màu đo đỏ "));
+        dsNuocUong2.add(new Drink_Item("Con sư tử",20000,R.drawable.nuoc_5,"So da là nước được làm từ nước khoáng"));
+        dsNuocUong2.add(new Drink_Item("Dừa trái",20000,R.drawable.nuoc_6,"So da là nước được làm từ nước khoáng"));
+        dsNuocUong2.add(new Drink_Item("Nước ép dưa hấu",20000,R.drawable.nuoc_7,"So da là nước được làm từ nước khoáng"));
+        dsNuocUong2.add(new Drink_Item("Nước cam ép",20000,R.drawable.nuoc_8,"So da là nước được làm từ nước khoáng"));
+        dsNuocUong2.add(new Drink_Item("Trà đá",20000,R.drawable.nuoc_9,"So da là nước được làm từ nước khoáng"));
 
         dsMenu.add(new Category_Menu("Trà Sữa",dsNuocUong));
         dsMenu.add(new Category_Menu("Cà Phê",dsNuocUong2));

@@ -14,6 +14,7 @@ public class Drink_Item {
         this.ten = ten;
         this.gia = gia;
         this.anh = anh;
+
     }
 
     public String getMoTa() {
