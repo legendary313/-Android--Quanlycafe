@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity"
+    android:background="#FFFFFF">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/email_dang_nhap"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="120dp"
+        android:fontFamily="@font/ribeye"
+        android:text="V-cafe"
+        android:textColor="#070707"
+        android:textSize="56sp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/email_dang_nhap"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="90dp"
+        android:fontFamily="@font/ribeye"
+        android:text="Helping you to get better"
+        android:textColor="#070707"
+        android:textSize="24sp"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/email_dang_nhap"
+        android:layout_marginBottom="29dp"
+        android:text="Đăng nhập"
+        android:textColor="#070707"
+        android:textSize="24sp"
+        android:layout_centerHorizontal="true"/>
+
+    <EditText
+        android:id="@+id/email_dang_nhap"
+        android:layout_width="235dp"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:singleLine="true"
+        android:maxLines="1"
+        android:hint="Email đăng nhập" />
+
+    <EditText
+        android:id="@+id/mat_khau_dang_nhap"
+        android:layout_width="235dp"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/email_dang_nhap"
+        android:layout_centerHorizontal="true"
+        android:inputType="textPassword"
+        android:singleLine="true"
+        android:maxLines="1"
+        android:layout_marginBottom="-62dp"
+        android:hint="Mật khẩu" />
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/mat_khau_dang_nhap"
+        android:layout_marginTop="87dp"
+        android:orientation="horizontal"
+        android:layout_centerHorizontal="true">
+
+        <Button
+            android:id="@+id/nut_dang_nhap"
+            android:background="?android:attr/selectableItemBackground"
+            android:drawableLeft="@drawable/login"
+            android:drawablePadding="15sp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentBottom="true"
+            android:layout_toStartOf="@+id/nut_dangky"
+            android:layout_toLeftOf="@+id/nut_dangky"
+            android:text="Đăng nhập" />
+
+    </LinearLayout>
+
+    <ProgressBar
+        android:id="@+id/progressBar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center|bottom"
+        android:layout_marginBottom="20dp"
+        android:layout_centerInParent="true"
+        android:visibility="gone" />
+</RelativeLayout>

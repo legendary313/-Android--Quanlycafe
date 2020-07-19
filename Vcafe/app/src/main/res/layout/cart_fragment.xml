@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:id="@+id/cart"
+    android:layout_width="match_parent"
+    android:layout_height="50dp"
+    android:orientation="horizontal"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <TextView
+        android:id="@+id/so_luong_items"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="x99999"/>
+
+    <TextView
+        android:id="@+id/tong_tien_items"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="500 000"/>
+
+</LinearLayout>
