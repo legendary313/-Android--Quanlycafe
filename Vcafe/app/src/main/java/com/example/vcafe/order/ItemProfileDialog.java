@@ -11,14 +11,15 @@ import android.widget.TextView;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.signature.ObjectKey;
 import com.example.vcafe.R;
+import com.example.vcafe.order.model.Item;
 
 public class ItemProfileDialog extends Dialog {
-    Drink_Item drink_item;
+    Item drink_item;
     ImageView dialogAnh;
     TextView dialogTen;
     TextView dialogGia;
     TextView dialogMoTa;
-    public ItemProfileDialog(Context context, Drink_Item drink_item) {
+    public ItemProfileDialog(Context context, Item drink_item) {
         super(context);
         this.drink_item=drink_item;
         this.setContentView(R.layout.dialog_profile_item);
@@ -31,12 +32,12 @@ public class ItemProfileDialog extends Dialog {
 
 
         Glide.with(getContext())
-                .load(drink_item.getAnh())
+                .load(drink_item.getImg_link())
                 .signature(new ObjectKey(String.valueOf(System.currentTimeMillis())))
                 .into( dialogAnh);
-        dialogTen.setText(  drink_item.getTen());
-        dialogGia.setText(  drink_item.getGia()+"");
-        dialogMoTa.setText(  drink_item.getMoTa());
+        dialogTen.setText(  drink_item.getName());
+        dialogGia.setText(  drink_item.getPrice()+"");
+        dialogMoTa.setText(  drink_item.getDescription());
 
 
     }

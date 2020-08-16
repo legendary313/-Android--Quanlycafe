@@ -1,4 +1,4 @@
-package com.example.vcafe.order;
+package com.example.vcafe.order.adapter;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -13,23 +13,24 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.signature.ObjectKey;
 import com.example.vcafe.R;
+import com.example.vcafe.order.model.OrderItem;
 
 import java.util.List;
 
-public class Drink_Order_List_Adapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>{
+public class OrderRecyclerViewAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>{
     private Context context;
-    private List<Drink_Oder_Item> items;
+    private List<OrderItem> items;
     private OnItemOrderClickListener mOnItemOrderClickListener;
     private int type;
 
 
-    public Drink_Order_List_Adapter(Context context,List<Drink_Oder_Item> items,OnItemOrderClickListener onItemOrderClickListener){
+    public OrderRecyclerViewAdapter(Context context, List<OrderItem> items, OnItemOrderClickListener onItemOrderClickListener){
         this.context=context;
         this.items=items;
         this.mOnItemOrderClickListener= onItemOrderClickListener;
         this.type=0;
     }
-    public Drink_Order_List_Adapter(Context context,List<Drink_Oder_Item> items,OnItemOrderClickListener onItemOrderClickListener,int type){
+    public OrderRecyclerViewAdapter(Context context, List<OrderItem> items, OnItemOrderClickListener onItemOrderClickListener, int type){
         this.context=context;
         this.items=items;
         this.mOnItemOrderClickListener= onItemOrderClickListener;
@@ -61,7 +62,7 @@ public class Drink_Order_List_Adapter extends RecyclerView.Adapter<RecyclerView.
     public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) {
         if(type==0){
             ViewHolder holder1=(ViewHolder) holder;
-        Drink_Oder_Item item=items.get(position);
+            OrderItem item=items.get(position);
 
         ImageView anh=holder1.anh;
         TextView ten=holder1.ten;
@@ -71,17 +72,17 @@ public class Drink_Order_List_Adapter extends RecyclerView.Adapter<RecyclerView.
 
 
         Glide.with(context)
-                .load(item.getAnh())
+                .load(item.getImg_link())
                 .signature(new ObjectKey(String.valueOf(System.currentTimeMillis())))
                 .into( anh);
-        ten.setText(item.getTen());
-        gia.setText(item.getGia()+"");
-        ghiChu.setText(item.getGhiChu());
-        soLuong.setText("x"+item.getSoLuong());
+        ten.setText(item.getName());
+        gia.setText(item.getPrice()+"");
+        ghiChu.setText(item.getNote());
+        soLuong.setText("x"+item.getQuantity());
         }else if(type==1){
             ViewHolder2 holder2=(ViewHolder2)holder;
 
-            Drink_Oder_Item item=items.get(position);
+            OrderItem item=items.get(position);
 
 
             TextView ten=holder2.ten;
@@ -89,10 +90,10 @@ public class Drink_Order_List_Adapter extends RecyclerView.Adapter<RecyclerView.
             TextView soLuong=holder2.soLuong;
             TextView tong=holder2.tong;
 
-            ten.setText(item.getTen());
-            gia.setText(item.getGia()+"");
-            tong.setText(item.getSoLuong()*item.getGia()+"");
-            soLuong.setText("x"+item.getSoLuong());
+            ten.setText(item.getName());
+            gia.setText(item.getPrice()+"");
+            tong.setText(item.getQuantity()*item.getPrice()+"");
+            soLuong.setText("x"+item.getQuantity());
 
 
         }

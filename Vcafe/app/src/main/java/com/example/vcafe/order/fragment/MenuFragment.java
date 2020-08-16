@@ -1,4 +1,4 @@
-package com.example.vcafe.order;
+package com.example.vcafe.order.fragment;
 
 import android.content.Context;
 import android.graphics.Color;
@@ -7,7 +7,6 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Toast;
 
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.GridLayoutManager;
@@ -15,15 +14,21 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.vcafe.R;
+import com.example.vcafe.order.ItemProfileDialog;
+import com.example.vcafe.order.OrderActivity;
+import com.example.vcafe.order.adapter.MenuRecyclerViewAdapter;
+import com.example.vcafe.order.model.Item;
 
-public class Menu_Fragment extends Fragment implements Menu_Adapter.OnItemOrderClickListener{
+import java.util.List;
+
+public class MenuFragment extends Fragment implements MenuRecyclerViewAdapter.OnItemOrderClickListener{
     OrderActivity main;
     Context context = null;
-    private  java.util.List<Drink_Item> list;
+    private List<Item> list;
     private RecyclerView menu_view;
-    private Menu_Adapter menu_adapter;
+    private MenuRecyclerViewAdapter menu_adapter;
 
-    public Menu_Fragment(java.util.List<Drink_Item> list) {
+    public MenuFragment(List<Item> list) {
         this.list = list;
     }
 
@@ -45,12 +50,12 @@ public class Menu_Fragment extends Fragment implements Menu_Adapter.OnItemOrderC
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         super.onCreateView(inflater, container, savedInstanceState);
-        View view=inflater.inflate(R.layout.menu,container,false);
+        View view=inflater.inflate(R.layout.menu_fragment,container,false);
 
-        menu_view =(RecyclerView)view.findViewById(R.id.menu);
+        menu_view =(RecyclerView) view.findViewById(R.id.menu);
 
 
-        menu_adapter=new Menu_Adapter(getContext(), list, this);
+        menu_adapter=new MenuRecyclerViewAdapter(getContext(), list, this);
 
         menu_view.setAdapter(menu_adapter);
 

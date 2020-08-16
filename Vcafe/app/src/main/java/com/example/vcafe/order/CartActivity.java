@@ -11,11 +11,12 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.vcafe.R;
+import com.example.vcafe.order.adapter.OrderRecyclerViewAdapter;
 
-public class CartActivity extends AppCompatActivity implements Drink_Order_List_Adapter.OnItemOrderClickListener{
+public class CartActivity extends AppCompatActivity implements OrderRecyclerViewAdapter.OnItemOrderClickListener{
 
    // ArrayList<Drink_Oder_Item> items=new ArrayList<>();
-    Drink_Order_List_Adapter adapter;
+    OrderRecyclerViewAdapter adapter;
     TextView textView;
     Dialog itemDialog;
 
@@ -34,7 +35,7 @@ public class CartActivity extends AppCompatActivity implements Drink_Order_List_
 
 
 
-        adapter=new Drink_Order_List_Adapter(this, OrderActivity.dsOrder,this);
+        adapter=new OrderRecyclerViewAdapter(this, OrderActivity.dsOrder,this);
 
         dsOrder.setAdapter(adapter);
 
@@ -66,7 +67,7 @@ public class CartActivity extends AppCompatActivity implements Drink_Order_List_
     public int tongTien(){
         int tong_tien=0;
         for(int i=0;i< OrderActivity.dsOrder.size();i++){
-            tong_tien+= OrderActivity.dsOrder.get(i).getGia()* OrderActivity.dsOrder.get(i).getSoLuong();
+            tong_tien+= OrderActivity.dsOrder.get(i).getPrice()* OrderActivity.dsOrder.get(i).getQuantity();
         }
         return tong_tien;
 

@@ -1,6 +1,7 @@
-package com.example.vcafe.order;
+package com.example.vcafe.order.adapter;
 
 import android.content.Context;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,16 +14,17 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.signature.ObjectKey;
 import com.example.vcafe.R;
+import com.example.vcafe.order.model.Item;
 
 import java.util.List;
 
-public class Menu_Adapter   extends RecyclerView.Adapter<Menu_Adapter.ViewHolder> {
+public class MenuRecyclerViewAdapter extends RecyclerView.Adapter<MenuRecyclerViewAdapter.ViewHolder> {
     private Context context;
 
-    private java.util.List<Drink_Item> list;
+    private List<Item> list;
     private OnItemOrderClickListener mOnItemOrderClickListener;
 
-    public Menu_Adapter(Context context, List<Drink_Item> list, OnItemOrderClickListener mOnItemOrderClickListener) {
+    public MenuRecyclerViewAdapter(Context context, List<Item> list, OnItemOrderClickListener mOnItemOrderClickListener) {
         this.context = context;
         this.list = list;
         this.mOnItemOrderClickListener = mOnItemOrderClickListener;
@@ -30,6 +32,7 @@ public class Menu_Adapter   extends RecyclerView.Adapter<Menu_Adapter.ViewHolder
 
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+        Log.i("CHECK-DATA","Ở ĐÂY LÀ 1 cái menu nè : "+list.size());
         context=parent.getContext();
         LayoutInflater inflater=LayoutInflater.from(context);
         View itemView;
@@ -43,7 +46,7 @@ public class Menu_Adapter   extends RecyclerView.Adapter<Menu_Adapter.ViewHolder
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         ViewHolder holder1=(ViewHolder) holder;
-        Drink_Item item=list.get(position);
+        Item item=list.get(position);
 
         ImageView anh=holder1.anh;
         TextView ten=holder1.ten;
@@ -51,11 +54,11 @@ public class Menu_Adapter   extends RecyclerView.Adapter<Menu_Adapter.ViewHolder
 
 
         Glide.with(context)
-                .load(item.getAnh())
+                .load(item.getImg_link())
                 .signature(new ObjectKey(String.valueOf(System.currentTimeMillis())))
                 .into( anh);
-        ten.setText(item.getTen());
-        gia.setText(item.getGia()+"");
+        ten.setText(item.getName());
+        gia.setText(item.getPrice()+"");
 
     }
 

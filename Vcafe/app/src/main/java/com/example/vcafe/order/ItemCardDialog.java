@@ -13,10 +13,11 @@ import androidx.annotation.NonNull;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.signature.ObjectKey;
 import com.example.vcafe.R;
+import com.example.vcafe.order.adapter.OrderRecyclerViewAdapter;
 
 public class ItemCardDialog extends Dialog {
     private int position;
-    Drink_Order_List_Adapter adapter;
+    OrderRecyclerViewAdapter adapter;
     TextView tongTien;
     ImageView dialogAnh;
     TextView dialogTen;
@@ -27,7 +28,7 @@ public class ItemCardDialog extends Dialog {
     Button dialogSLGiam;
     Button dialogOke;
     Button dialogCancle;
-    public ItemCardDialog(@NonNull Context context, int position, Drink_Order_List_Adapter adapter, TextView tongTien) {
+    public ItemCardDialog(@NonNull Context context, int position, OrderRecyclerViewAdapter adapter, TextView tongTien) {
         super(context);
         this.setContentView(R.layout.dialog_order_item);
         this.position=position;
@@ -48,14 +49,14 @@ public class ItemCardDialog extends Dialog {
 
 
         Glide.with(getContext())
-                .load(OrderActivity.dsOrder.get(position).getAnh())
+                .load(OrderActivity.dsOrder.get(position).getImg_link())
                 .signature(new ObjectKey(String.valueOf(System.currentTimeMillis())))
                 .into( dialogAnh);
 
-        dialogTen.setText( OrderActivity.dsOrder.get(position).getTen());
-        dialogGia.setText( OrderActivity.dsOrder.get(position).getGia()+"");
-        dialogSoLuong.setText( OrderActivity.dsOrder.get(position).getSoLuong()+"");
-        dialogGhiChu.setText( OrderActivity.dsOrder.get(position).getGhiChu());
+        dialogTen.setText( OrderActivity.dsOrder.get(position).getName());
+        dialogGia.setText( OrderActivity.dsOrder.get(position).getPrice()+"");
+        dialogSoLuong.setText( OrderActivity.dsOrder.get(position).getQuantity()+"");
+        dialogGhiChu.setText( OrderActivity.dsOrder.get(position).getNote());
 
 
         dialogSLGiam.setOnClickListener(new View.OnClickListener() {
@@ -93,8 +94,8 @@ public class ItemCardDialog extends Dialog {
                 int sl=Integer.parseInt(dialogSoLuong.getText().toString());
                 String ghiChu=dialogGhiChu.getText().toString();
 
-                OrderActivity.dsOrder.get(position).setSoLuong(sl);
-                OrderActivity.dsOrder.get(position).setGhiChu(ghiChu);
+                OrderActivity.dsOrder.get(position).setQuantity(sl);
+                OrderActivity.dsOrder.get(position).setNote(ghiChu);
 
                 adapter.notifyDataSetChanged();
                 int tong_tien=tongTien();
@@ -111,7 +112,7 @@ public class ItemCardDialog extends Dialog {
     public int tongTien(){
         int tong_tien=0;
         for(int i=0;i< OrderActivity.dsOrder.size();i++){
-            tong_tien+= OrderActivity.dsOrder.get(i).getGia()* OrderActivity.dsOrder.get(i).getSoLuong();
+            tong_tien+= OrderActivity.dsOrder.get(i).getPrice()* OrderActivity.dsOrder.get(i).getQuantity();
         }
         return tong_tien;
 
