@@ -23,6 +23,9 @@ ver 1.0:  - Kết hợp menu vs listoder
 		
 
 			  
+Oder:(Đã gộp vào trong Vcafe)
+ver 1.1:  -Thay đổi kiến trúc
+	  -Kết nối database	
 
 		 
 				
