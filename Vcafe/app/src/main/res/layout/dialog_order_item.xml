@@ -5,14 +5,13 @@
     android:background="@drawable/shape"
     android:layout_margin="20dp"
     android:padding="20dp">
-    <!--    android:background="@drawable/shape"-->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="120dp"
         android:weightSum="3"
         android:orientation="horizontal">
         <ImageView
-            android:id="@+id/dialog_item_anh"
+            android:id="@+id/imv_dial_image"
             android:layout_width="0dp"
             android:layout_height="100dp"
             android:scaleType="centerCrop"
@@ -25,14 +24,14 @@
             android:padding="20dp"
             android:orientation="vertical">
             <TextView
-                android:id="@+id/dialog_item_ten"
+                android:id="@+id/txtv_dial_name"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textStyle="bold"
                 android:textSize="20dp"
                 android:text="Tên SP"/>
             <TextView
-                android:id="@+id/dialog_item_gia"
+                android:id="@+id/txtv_dial_price"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textStyle="bold"
@@ -47,7 +46,7 @@
         android:layout_height="wrap_content"
         android:text="Ghi chú:"/>
     <EditText
-        android:id="@+id/dialog_item_ghi_chu"
+        android:id="@+id/edit_dial_note"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="Ít đường nhiều tình yêu"/>
@@ -55,27 +54,29 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:weightSum="2"
+        android:weightSum="3"
         android:orientation="horizontal">
         <LinearLayout
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:layout_weight="1"
+            android:layout_weight="2"
             android:orientation="horizontal">
             <Button
-                android:id="@+id/dialog_item_so_luong_giam"
+                android:id="@+id/btn_dial_decrease"
                 android:layout_width="50dp"
                 android:layout_height="50dp"
                 android:text="-" />
 
-            <TextView
-                android:id="@+id/dialog_item_so_luong"
+            <EditText
+                android:id="@+id/edit_dial_quantity"
                 android:layout_width="50dp"
                 android:layout_height="50dp"
-                android:text="SL" />
+                android:gravity="center"
+                android:inputType="number"
+                android:text="0"/>
 
             <Button
-                android:id="@+id/dialog_item_so_luong_tang"
+                android:id="@+id/btn_dial_increase"
                 android:layout_width="50dp"
                 android:layout_height="50dp"
                 android:text="+" />
@@ -90,14 +91,14 @@
 
            <RelativeLayout
                android:layout_width="match_parent"
-               android:layout_height="match_parent">
+               android:layout_height="match_parent"
+               android:gravity="end">
 
 
                <Button
-                   android:id="@+id/dialog_oke"
+                   android:id="@+id/btn_dial_oke"
                    android:layout_width="100dp"
                    android:layout_height="50dp"
-                   android:layout_alignParentEnd="true"
 
                    android:text="OKE" />
 

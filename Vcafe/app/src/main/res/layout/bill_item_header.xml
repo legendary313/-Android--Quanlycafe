@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="10dp"
+    android:paddingBottom="0dp"
+    android:background="#ffffff"
+    android:orientation="vertical">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:fontFamily="@font/ribeye"
+        android:text="V-cafe"
+        android:textColor="#070707"
+        android:textSize="56sp" />
+    <TextView
+        android:id="@+id/txtv_bill_type_order"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+
+        android:text="ORDER"/>
+    <TextView
+        android:id="@+id/txtv_bill_date_order"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Thời gian :"/>
+
+    <TextView
+        android:id="@+id/txtv_bill_staff_order"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Nhân viên :"/>
+
+    <LinearLayout  android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:weightSum="7"
+        android:background="#ffffff"
+        >
+        <TextView
+            android:layout_weight="2"
+            android:layout_width="0dp"
+            android:gravity="center"
+            android:layout_height="match_parent"
+            android:text="Tên"/>
+        <TextView
+            android:id="@+id/txtv_bill_item_quantity"
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:gravity="center"
+            android:text="SL"
+            android:layout_height="match_parent"/>
+        <TextView
+            android:id="@+id/txtv_bill_item_price"
+            android:layout_weight="2"
+            android:layout_width="0dp"
+            android:gravity="center"
+            android:text="Giá"
+            android:layout_height="match_parent"/>
+        <TextView
+            android:id="@+id/txtv_bill_item_total"
+            android:layout_weight="2"
+            android:layout_width="0dp"
+
+            android:gravity="center"
+            android:text="Tổng tiền"
+            android:layout_height="match_parent"/>
+
+    </LinearLayout>
+
+</LinearLayout>

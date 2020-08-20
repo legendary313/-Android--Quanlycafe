@@ -2,4 +2,7 @@
     <string name="app_name">Vcafe</string>
     <string name="minimum_password">Mật khẩu phải nhiều hơn 6 kí tự!</string>
     <string name="auth_failed">Đăng nhập thất bại, vui lòng kiểm tra lại thông tin đăng nhập!</string>
+    <string name="title_menu">Menu</string>
+    <string name="title_card">Card</string>
+    <string name="title_bill">Bill</string>
 </resources>

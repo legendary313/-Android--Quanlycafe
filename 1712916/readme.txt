@@ -27,5 +27,11 @@ Oder:(Đã gộp vào trong Vcafe)
 ver 1.1:  -Thay đổi kiến trúc
 	  -Kết nối database	
 
+ver 1.2:  -Thay đổi kiến trúc + giao diện
+	  -Làm thêm thanh toán
+          - Cửa sổ quản lý bàn
+ver1.3(Dự định) -Hoàn tất phần discount
+		-Thêm phần search item  	 
+
 		 
 				

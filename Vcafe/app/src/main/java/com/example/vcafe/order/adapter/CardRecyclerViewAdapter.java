@@ -11,31 +11,26 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
-import com.bumptech.glide.signature.ObjectKey;
 import com.example.vcafe.R;
 import com.example.vcafe.order.model.OrderItem;
+import com.example.vcafe.order.model.VieMoney;
 
 import java.util.List;
 
-public class OrderRecyclerViewAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>{
+public class CardRecyclerViewAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>{
     private Context context;
     private List<OrderItem> items;
     private OnItemOrderClickListener mOnItemOrderClickListener;
-    private int type;
 
 
-    public OrderRecyclerViewAdapter(Context context, List<OrderItem> items, OnItemOrderClickListener onItemOrderClickListener){
+
+    public CardRecyclerViewAdapter(Context context, List<OrderItem> items, OnItemOrderClickListener onItemOrderClickListener){
         this.context=context;
         this.items=items;
         this.mOnItemOrderClickListener= onItemOrderClickListener;
-        this.type=0;
+
     }
-    public OrderRecyclerViewAdapter(Context context, List<OrderItem> items, OnItemOrderClickListener onItemOrderClickListener, int type){
-        this.context=context;
-        this.items=items;
-        this.mOnItemOrderClickListener= onItemOrderClickListener;
-        this.type=type;
-    }
+
 
 
 
@@ -45,24 +40,20 @@ public class OrderRecyclerViewAdapter extends RecyclerView.Adapter<RecyclerView.
         LayoutInflater inflater=LayoutInflater.from(context);
         View itemView;
         RecyclerView.ViewHolder viewHolder=null;
-        if(type==0){
-            itemView=inflater.inflate(R.layout.order_item,parent,false);
+
+            itemView=inflater.inflate(R.layout.card_item,parent,false);
 
             viewHolder=new ViewHolder(itemView,mOnItemOrderClickListener);
-        }else if(type==1) {
-            itemView=inflater.inflate(R.layout.order_item_2,parent,false);
 
-            viewHolder=new ViewHolder2(itemView);
-        }
 
         return viewHolder;
     }
 
     @Override
     public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) {
-        if(type==0){
-            ViewHolder holder1=(ViewHolder) holder;
-            OrderItem item=items.get(position);
+
+        ViewHolder holder1=(ViewHolder) holder;
+        OrderItem item=items.get(position);
 
         ImageView anh=holder1.anh;
         TextView ten=holder1.ten;
@@ -73,56 +64,16 @@ public class OrderRecyclerViewAdapter extends RecyclerView.Adapter<RecyclerView.
 
         Glide.with(context)
                 .load(item.getImg_link())
-                .signature(new ObjectKey(String.valueOf(System.currentTimeMillis())))
                 .into( anh);
         ten.setText(item.getName());
-        gia.setText(item.getPrice()+"");
+        gia.setText(new VieMoney().change(item.getPrice()));
         ghiChu.setText(item.getNote());
         soLuong.setText("x"+item.getQuantity());
-        }else if(type==1){
-            ViewHolder2 holder2=(ViewHolder2)holder;
 
-            OrderItem item=items.get(position);
-
-
-            TextView ten=holder2.ten;
-            TextView gia=holder2.gia;
-            TextView soLuong=holder2.soLuong;
-            TextView tong=holder2.tong;
-
-            ten.setText(item.getName());
-            gia.setText(item.getPrice()+"");
-            tong.setText(item.getQuantity()*item.getPrice()+"");
-            soLuong.setText("x"+item.getQuantity());
-
-
-        }
 
     }
 
-//    @Override
-//    public void onBindViewHolder( Drink_Order_List_Adapter.ViewHolder holder, int position) {
-//        Drink_Oder_Item item=items.get(position);
-//
-//
-//        ImageView anh=holder.anh;
-//        TextView ten=holder.ten;
-//        TextView gia=holder.gia;
-//        TextView ghiChu=holder.ghiChu;
-//        TextView soLuong=holder.soLuong;
-//
-//
-//        anh.setImageResource(item.getAnh());
-//
-//        Glide.with(context)
-//                .load(item.getAnh())
-//                .signature(new ObjectKey(String.valueOf(System.currentTimeMillis())))
-//                .into( holder.anh);
-//        ten.setText(item.getTen());
-//        gia.setText(item.getGia()+"");
-//        ghiChu.setText(item.getGhiChu());
-//        soLuong.setText("x"+item.getSoLuong());
-//    }
+
 
     @Override
     public int getItemCount() {
@@ -170,20 +121,7 @@ public class OrderRecyclerViewAdapter extends RecyclerView.Adapter<RecyclerView.
     }
 
 
-    public class ViewHolder2 extends RecyclerView.ViewHolder{
-        public TextView ten;
-        public TextView soLuong;
-        public TextView gia;
-        public TextView tong;
 
-        public ViewHolder2(View itemView) {
-            super(itemView);
-            ten=(TextView)itemView.findViewById(R.id.order_item_ten_2);
-            soLuong=(TextView)itemView.findViewById(R.id.order_item_so_luong_2);
-            gia=(TextView)itemView.findViewById(R.id.order_item_gia_2);
-            tong=(TextView)itemView.findViewById(R.id.order_item_tong_2);
-        }
-    }
 
     public interface OnItemOrderClickListener{
         void onClick(int position);

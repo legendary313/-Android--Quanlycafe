@@ -1,85 +1,61 @@
 package com.example.vcafe.order.fragment;
 
-import android.content.Context;
-import android.graphics.Color;
-import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
+import android.widget.Toast;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-import androidx.recyclerview.widget.GridLayoutManager;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
+
+import androidx.viewpager.widget.ViewPager;
 
 import com.example.vcafe.R;
-import com.example.vcafe.order.ItemProfileDialog;
+import com.example.vcafe.order.ListOrderActivity;
 import com.example.vcafe.order.OrderActivity;
-import com.example.vcafe.order.adapter.MenuRecyclerViewAdapter;
+import com.example.vcafe.order.adapter.MenuViewpagerAdapter;
+
+import com.example.vcafe.order.model.Calculator;
 import com.example.vcafe.order.model.Item;
+import com.example.vcafe.order.model.OrderItem;
+import com.google.android.material.tabs.TabLayout;
 
-import java.util.List;
+public class MenuFragment extends Fragment {
+    private ViewPager viewPager=null;
+    private MenuViewpagerAdapter menu_viewpager_adapter;
 
-public class MenuFragment extends Fragment implements MenuRecyclerViewAdapter.OnItemOrderClickListener{
-    OrderActivity main;
-    Context context = null;
-    private List<Item> list;
-    private RecyclerView menu_view;
-    private MenuRecyclerViewAdapter menu_adapter;
 
-    public MenuFragment(List<Item> list) {
-        this.list = list;
+    public View onCreateView(@NonNull LayoutInflater inflater,
+                             ViewGroup container, Bundle savedInstanceState) {
+
+        View root = inflater.inflate(R.layout.menu_fragment, container, false);
+        //find view by id
+        viewPager=(ViewPager)root.findViewById(R.id.vpg_menu_category);
+
+
+        menu_viewpager_adapter=new MenuViewpagerAdapter(getFragmentManager(),ListOrderActivity.getMenu());
+        viewPager.setAdapter(menu_viewpager_adapter);
+        TabLayout tabLayout = root.findViewById(R.id.tly_menu_category);
+        tabLayout.setupWithViewPager(viewPager);
+
+        return root;
     }
 
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        try {
-            context = getActivity(); // use this reference to invoke main callbacks
-            main = (OrderActivity) getActivity();
 
-        } catch (IllegalStateException e) {
-            throw new IllegalStateException(
-                    "MainActivity must implement callbacks");
+    public static void addToCart(Item drink_item){
+
+        int condition= Calculator.validateAddOrder(OrderActivity.orders,drink_item);
+
+        if(condition>=0){
+            OrderActivity.orders.get(condition).increase(1);
+        }else if(condition==-1){
+
+            OrderActivity.orders.add(new OrderItem(drink_item));
         }
-    }
 
-
-    @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-        super.onCreateView(inflater, container, savedInstanceState);
-        View view=inflater.inflate(R.layout.menu_fragment,container,false);
-
-        menu_view =(RecyclerView) view.findViewById(R.id.menu);
-
-
-        menu_adapter=new MenuRecyclerViewAdapter(getContext(), list, this);
-
-        menu_view.setAdapter(menu_adapter);
-
-        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false);
-        GridLayoutManager gridLayoutManager=new GridLayoutManager(getContext(), 3);
-        menu_view.setAdapter(menu_adapter);
-        menu_view.setLayoutManager(gridLayoutManager);
-        return view;
-    }
-
-
-    @Override
-    public void onClick(int position) {
-        OrderActivity.addToCart(list.get(position));
-
-
-    }
-
-    @Override
-    public void onLongClick(int position) {
-        ItemProfileDialog itemProfileDialog=new ItemProfileDialog(getContext(),list.get(position));
-        itemProfileDialog.setUp();
-        itemProfileDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
-        itemProfileDialog.show();
 
     }
 }

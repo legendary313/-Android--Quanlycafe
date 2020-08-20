@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+   <androidx.recyclerview.widget.RecyclerView
+       android:id="@+id/rycl_bill"
+       android:layout_height="match_parent"
+       android:layout_width="match_parent"
+       android:layout_above="@+id/lnly_btn_bill"
+       />
+   <androidx.cardview.widget.CardView
+       xmlns:card_view="http://schemas.android.com/apk/res-auto"
+       android:id="@+id/lnly_btn_bill"
+       android:layout_alignParentBottom="true"
+       android:layout_width="match_parent"
+       android:layout_height="wrap_content"
+       android:layout_margin="10dp"
+       card_view:cardCornerRadius="8dp"
+       card_view:cardElevation="8dp">
+      <Button
+          android:id="@+id/btn_bill_pay"
+          android:layout_width="fill_parent"
+          android:layout_height="fill_parent"
+          android:background="#02E2FF"
+         android:text="Thanh toán"/>
+   </androidx.cardview.widget.CardView>
+</RelativeLayout>

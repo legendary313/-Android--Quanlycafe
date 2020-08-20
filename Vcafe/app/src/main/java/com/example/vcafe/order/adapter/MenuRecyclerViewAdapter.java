@@ -12,13 +12,14 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
-import com.bumptech.glide.signature.ObjectKey;
+import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.example.vcafe.R;
 import com.example.vcafe.order.model.Item;
+import com.example.vcafe.order.model.VieMoney;
 
 import java.util.List;
 
-public class MenuRecyclerViewAdapter extends RecyclerView.Adapter<MenuRecyclerViewAdapter.ViewHolder> {
+public class MenuRecyclerViewAdapter extends RecyclerView.Adapter<MenuRecyclerViewAdapter.MenuViewHolder> {
     private Context context;
 
     private List<Item> list;
@@ -31,7 +32,7 @@ public class MenuRecyclerViewAdapter extends RecyclerView.Adapter<MenuRecyclerVi
     }
 
     @Override
-    public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+    public MenuViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         Log.i("CHECK-DATA","Ở ĐÂY LÀ 1 cái menu nè : "+list.size());
         context=parent.getContext();
         LayoutInflater inflater=LayoutInflater.from(context);
@@ -39,13 +40,13 @@ public class MenuRecyclerViewAdapter extends RecyclerView.Adapter<MenuRecyclerVi
         RecyclerView.ViewHolder viewHolder=null;
         itemView=inflater.inflate(R.layout.menu_item,parent,false);
 
-        viewHolder=new ViewHolder(itemView,mOnItemOrderClickListener);
-        return (ViewHolder) viewHolder;
+        viewHolder=new MenuViewHolder(itemView,mOnItemOrderClickListener);
+        return (MenuViewHolder) viewHolder;
     }
 
     @Override
-    public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        ViewHolder holder1=(ViewHolder) holder;
+    public void onBindViewHolder(@NonNull MenuViewHolder holder, int position) {
+        MenuViewHolder holder1=(MenuViewHolder) holder;
         Item item=list.get(position);
 
         ImageView anh=holder1.anh;
@@ -55,10 +56,10 @@ public class MenuRecyclerViewAdapter extends RecyclerView.Adapter<MenuRecyclerVi
 
         Glide.with(context)
                 .load(item.getImg_link())
-                .signature(new ObjectKey(String.valueOf(System.currentTimeMillis())))
+                .diskCacheStrategy(DiskCacheStrategy.RESOURCE)
                 .into( anh);
         ten.setText(item.getName());
-        gia.setText(item.getPrice()+"");
+        gia.setText(new VieMoney().change(item.getPrice()) );
 
     }
 
@@ -67,13 +68,13 @@ public class MenuRecyclerViewAdapter extends RecyclerView.Adapter<MenuRecyclerVi
         return list.size();
     }
 
-    public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener, View.OnLongClickListener {
+    public class MenuViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener, View.OnLongClickListener {
         ImageView anh;
         TextView ten;
         TextView gia;
         OnItemOrderClickListener onItemOrderClickListener;
 
-        public ViewHolder( View itemView,OnItemOrderClickListener onItemOrderClickListener) {
+        public MenuViewHolder(View itemView, OnItemOrderClickListener onItemOrderClickListener) {
             super(itemView);
 
             this.onItemOrderClickListener=onItemOrderClickListener;

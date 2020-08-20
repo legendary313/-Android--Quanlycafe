@@ -3,8 +3,19 @@ package com.example.vcafe.order.model;
 import java.util.List;
 
 public class Calculator {
-    public static double total(List<OrderItem> orderItems){
-        return 0.0;
+    public static int totalMoney(List<OrderItem> orderItems){
+        int total=0;
+        for(int i=0;i<orderItems.size();i++){
+            total+=orderItems.get(i).getQuantity()*orderItems.get(i).getPrice();
+        }
+        return total;
+    }
+    public static int totalQuantity(List<OrderItem> orderItems){
+        int total=0;
+        for(int i=0;i<orderItems.size();i++){
+            total+=orderItems.get(i).getQuantity();
+        }
+        return total;
     }
     public static int validateAddOrder(List<OrderItem> orderItems,Item item){
         int i=0;

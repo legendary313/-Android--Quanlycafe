@@ -12,7 +12,7 @@ android:padding="20dp">
     android:weightSum="3"
     android:orientation="horizontal">
     <ImageView
-        android:id="@+id/dialog_item_anh"
+        android:id="@+id/imv_dial_image"
         android:layout_width="0dp"
         android:layout_height="100dp"
         android:scaleType="centerCrop"
@@ -25,14 +25,14 @@ android:padding="20dp">
         android:padding="20dp"
         android:orientation="vertical">
         <TextView
-            android:id="@+id/dialog_item_ten"
+            android:id="@+id/txtv_dial_name"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textStyle="bold"
             android:textSize="20dp"
             android:text="Tên SP"/>
         <TextView
-            android:id="@+id/dialog_item_gia"
+            android:id="@+id/txtv_dial_price"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textStyle="bold"
@@ -42,12 +42,11 @@ android:padding="20dp">
     </LinearLayout>
 </LinearLayout>
 <TextView
-
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:text="Mô tả sản phẩm:"/>
 <TextView
-    android:id="@+id/dialog_item_mo_ta"
+    android:id="@+id/txtv_dial_decriptions"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:text="Mô tả:"/>

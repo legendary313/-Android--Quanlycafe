@@ -1,10 +1,12 @@
 package com.example.vcafe.order.model;
 
-public class OrderItem extends Item implements ChangeQuantity{
+public class OrderItem extends Item implements IChangeQuantity {
     private int quantity;
     private String note;
     public OrderItem(Item item) {
+        this.setId(item.getId());
         this.setName(item.getName());
+        this.setPrice(item.getPrice());
         this.setNote("");
         this.setQuantity(1);
         this.setCategory(item.getCategory());
