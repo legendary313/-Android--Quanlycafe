@@ -1,5 +1,10 @@
 package com.example.vcafe.order;
 
+import android.app.Dialog;
+import android.app.ProgressDialog;
+import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.os.PersistableBundle;
 import android.util.Log;
@@ -17,8 +22,10 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 
+import com.example.vcafe.R;
 import com.example.vcafe.order.adapter.TableRecyclerViewAdapter;
 
+import com.example.vcafe.order.dialog.TableCombineDialog;
 import com.example.vcafe.order.model.Child;
 
 import com.example.vcafe.order.model.Table;
@@ -69,12 +76,16 @@ public class TableActivity extends AppCompatActivity implements TableRecyclerVie
     }
 
     private void loadData(){
+        final ProgressDialog mDialog= new ProgressDialog(this);
+        mDialog.setTitle("Đang tải các bàn");
+        mDialog.setCanceledOnTouchOutside(false);
+        mDialog.show();
         Log.i("CHECK-DATA","HELLO!");
         DatabaseReference myRef=database.getReference();
         myRef.addListenerForSingleValueEvent(new ValueEventListener() {
             public void onDataChange(DataSnapshot dataSnapshot) {
-
               adapter.notifyDataSetChanged();
+              mDialog.dismiss();
             }
 
             @Override
@@ -82,13 +93,15 @@ public class TableActivity extends AppCompatActivity implements TableRecyclerVie
         });
         myRef.child(Child.FB_ROOT_TABLE).addChildEventListener(new ChildEventListener() {
 
+
+
             @Override
             public void onChildAdded(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
+                String str=String.valueOf( snapshot.getKey());
                 Table data=snapshot.getValue(Table.class);
+                data.setKey(str);
 
                tables.add(data);
-                Log.i("CHECK-DATA",data.getName());
-
             }
 
             @Override
@@ -125,67 +138,61 @@ public class TableActivity extends AppCompatActivity implements TableRecyclerVie
 
     @Override
     public void onClick(int position) {
-        final DatabaseReference myRef=database.getReference();
-          currentPosition = position;
-        tables.get(currentPosition).setStatus(2);
-        myRef.addListenerForSingleValueEvent(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
+        if(tables.get(position).getStatus()==Table.STATUS_PROCESSING){
 
-                myRef.child(Child.FB_ROOT_TABLE).child(currentTable).setValue(tables.get(currentPosition));
-
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-
-            }
-        });
-
-        myRef.child(Child.FB_ROOT_TABLE).orderByChild("name").equalTo(tables.get(position).getName()).addChildEventListener(new ChildEventListener() {
-            @Override
-            public void onChildAdded(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
-                currentTable=snapshot.getKey();
-            }
-
-            @Override
-            public void onChildChanged(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
-
-            }
-
-            @Override
-            public void onChildRemoved(@NonNull DataSnapshot snapshot) {
-
-            }
-
-            @Override
-            public void onChildMoved(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
-
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-
-            }
-        });
-
-
+            Toast.makeText(getApplicationContext(),"Bàn đang bận!",Toast.LENGTH_SHORT).show();
+            return;
+        }
+        updateTableStatus(tables.get(position).getKey(),Table.STATUS_PROCESSING);
+        openOrder(position);
 
     }
 
     @Override
     public void onLongClick(int position) {
+        List<Table> tablesAvaiable=new ArrayList<>();
+        if(tables.get(position).getStatus()==Table.STATUS_PROCESSING){
+
+            Toast.makeText(getApplicationContext(),"Bàn đang bận!",Toast.LENGTH_SHORT).show();
+            return;
+        }
+
+
+        updateTableStatus(tables.get(position).getKey(),Table.STATUS_PROCESSING);
+        for (int i=0;i<tables.size();i++){
+            if(tables.get(i).getStatus()!=Table.STATUS_PROCESSING &&i!=position){
+                Table iTable=new Table();
+                iTable.setKey(tables.get(i).getKey());
+                iTable.setName(tables.get(i).getName());
+                iTable.setStatus(tables.get(i).getStatus());
+                tablesAvaiable.add(iTable);
+
+
+
+            }
+        }
+        TableCombineDialog mDialog=new TableCombineDialog(this,tablesAvaiable,tables.get(position));
+        mDialog.getWindow().setLayout(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+        mDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+
+        mDialog.setUp();
+        mDialog.show();
 
     }
-    void c(){
-        //Từ Available
-            //nếu ai đó click vào thì nó là PROCCESSING
-                        //Nếu click vào mà ko làm gì cả thì trở về AVIable //thanh toán
-                        //Nếu click vào mà thay đổi đi ra thì trở thành CHANGE
-        //TỪ CHANGE
-            //Đi ra mà ko thay đổi thì ko có j
-            //ĐI ra mà thay đổi thì update CHANGE
-            //Thanh toán đổi thành AVAIABLE
+
+    void openOrder(int position){
+        Intent intent=new Intent(this,OrderActivity.class);
+        Bundle bundle=new Bundle();
+        bundle.putString("TABLE_NAME",tables.get(position).getName());
+        bundle.putString("TABLE_KEY",tables.get(position).getKey());
+        intent.putExtras(bundle);
+        startActivity(intent);
+    }
+
+    public static void updateTableStatus(String tableKey,int status){
+        final DatabaseReference myRef=FirebaseDatabase.getInstance().getReference();
+
+        myRef.child(Child.FB_ROOT_TABLE).child(tableKey).child("status").setValue(status);
 
     }
 }

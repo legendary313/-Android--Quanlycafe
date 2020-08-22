@@ -23,9 +23,11 @@ import com.example.vcafe.order.model.Calculator;
 import com.example.vcafe.order.model.IUpdateView;
 import com.example.vcafe.order.model.Payed;
 
+import java.util.Date;
+
 public class BillFragment extends Fragment implements IUpdateView {
     private Payed payed=new Payed();
-    public static String date;
+    public static Date date;
     public static int total;
     private BillRecyclerViewAdapter adapter;
     private Button btnPay;

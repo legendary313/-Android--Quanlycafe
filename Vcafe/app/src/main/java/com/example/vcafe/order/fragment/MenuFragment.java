@@ -19,11 +19,13 @@ import com.example.vcafe.order.OrderActivity;
 import com.example.vcafe.order.adapter.MenuViewpagerAdapter;
 
 import com.example.vcafe.order.model.Calculator;
+import com.example.vcafe.order.model.Data;
+import com.example.vcafe.order.model.IUpdateView;
 import com.example.vcafe.order.model.Item;
 import com.example.vcafe.order.model.OrderItem;
 import com.google.android.material.tabs.TabLayout;
 
-public class MenuFragment extends Fragment {
+public class MenuFragment extends Fragment implements IUpdateView {
     private ViewPager viewPager=null;
     private MenuViewpagerAdapter menu_viewpager_adapter;
 
@@ -36,7 +38,7 @@ public class MenuFragment extends Fragment {
         viewPager=(ViewPager)root.findViewById(R.id.vpg_menu_category);
 
 
-        menu_viewpager_adapter=new MenuViewpagerAdapter(getFragmentManager(),ListOrderActivity.getMenu());
+        menu_viewpager_adapter=new MenuViewpagerAdapter(getFragmentManager(), Data.getMenu());
         viewPager.setAdapter(menu_viewpager_adapter);
         TabLayout tabLayout = root.findViewById(R.id.tly_menu_category);
         tabLayout.setupWithViewPager(viewPager);
@@ -57,5 +59,10 @@ public class MenuFragment extends Fragment {
         }
 
 
+    }
+
+    @Override
+    public void updateView() {
+        menu_viewpager_adapter.notifyDataSetChanged();
     }
 }

@@ -6,7 +6,7 @@ public class Calculator {
     public static int totalMoney(List<OrderItem> orderItems){
         int total=0;
         for(int i=0;i<orderItems.size();i++){
-            total+=orderItems.get(i).getQuantity()*orderItems.get(i).getPrice();
+            total+=orderItems.get(i).getQuantity()*(orderItems.get(i).getPrice()-orderItems.get(i).getDiscountMoney());
         }
         return total;
     }

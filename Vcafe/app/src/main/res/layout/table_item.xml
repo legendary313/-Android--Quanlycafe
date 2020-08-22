@@ -9,9 +9,9 @@
     android:layout_marginBottom="3dp"
     android:layout_marginLeft="6dp"
     android:layout_marginRight="6dp"
-    card_view:cardCornerRadius="8dp"
+    card_view:cardCornerRadius="20dp"
     card_view:cardElevation="8dp"
-    card_view:cardBackgroundColor="#FFFFFF">
+     >
 
     <RelativeLayout
         android:layout_width="match_parent"

@@ -13,7 +13,6 @@ import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.vcafe.R;
-import com.example.vcafe.order.model.ItemClickListener;
 import com.example.vcafe.order.model.Table;
 
 import java.util.ArrayList;
@@ -52,13 +51,14 @@ public class TableRecyclerViewAdapter  extends RecyclerView.Adapter<TableRecycle
         int status=table.getStatus();
         if(status== Table.STATUS_AVAILABLE) {
             int color= ContextCompat.getColor(context, R.color.tableAvailabe);
-            holder.cvBackground.setBackgroundColor(color);
+            holder.cvBackground.setCardBackgroundColor(color);
+          //  holder.cvBackground.setBackgroundColor(color);
         } else if(status==Table.STATUS_PROCESSING){
             int color=ContextCompat.getColor(context , R.color.tableProccessing);
-            holder.cvBackground.setBackgroundColor(color);
+            holder.cvBackground.setCardBackgroundColor(color);
         } else if(status==Table.STATUS_UNFINISHED){
             int color=ContextCompat.getColor(context , R.color.tableUnfinished);
-            holder.cvBackground.setBackgroundColor(color);
+            holder.cvBackground.setCardBackgroundColor(color);
         }
     }
 
@@ -71,7 +71,7 @@ public class TableRecyclerViewAdapter  extends RecyclerView.Adapter<TableRecycle
 
 
 
-    public class TableViewHolder extends RecyclerView.ViewHolder  implements View.OnClickListener  {
+    public class TableViewHolder extends RecyclerView.ViewHolder  implements View.OnClickListener, View.OnLongClickListener  {
         public TextView txtName,txtChange;
         public CardView cvBackground;
 
@@ -84,6 +84,7 @@ public class TableRecyclerViewAdapter  extends RecyclerView.Adapter<TableRecycle
             cvBackground=(CardView)itemView.findViewById(R.id.cv_table_content);
             this.onItemTableClickListener=onItemTableClickListener;
             itemView.setOnClickListener(this);
+            itemView.setOnLongClickListener(this);
         }
 
 
@@ -92,6 +93,13 @@ public class TableRecyclerViewAdapter  extends RecyclerView.Adapter<TableRecycle
         @Override
         public void onClick(View view) {
             onItemTableClickListener.onClick(getAdapterPosition());
+        }
+
+        @Override
+        public boolean onLongClick(View view) {
+
+            onItemTableClickListener.onLongClick(getAdapterPosition());
+            return true;
         }
     }
 

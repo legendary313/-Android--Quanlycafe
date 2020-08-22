@@ -15,6 +15,7 @@ import com.bumptech.glide.Glide;
 import com.example.vcafe.R;
 import com.example.vcafe.order.OrderActivity;
 import com.example.vcafe.order.model.Child;
+import com.example.vcafe.order.model.Discount;
 import com.example.vcafe.order.model.Payed;
 import com.example.vcafe.order.model.VieMoney;
 import com.google.firebase.database.DatabaseReference;
@@ -57,7 +58,9 @@ public class PayDialog extends Dialog  {
                 myRef.child(Child.FB_ROOT_PAYED).push().setValue(payed);
 
                 Toast.makeText(getContext(),"Đã lưu!",Toast.LENGTH_SHORT).show();
+
                 //tắt activity order
+                OrderActivity.orders.clear();
                 iShutDownOrder.shutDown();
 
             }
@@ -66,8 +69,7 @@ public class PayDialog extends Dialog  {
             @Override
             public void onClick(View view) {
                 String code=edtCode.getText().toString();
-                float condition=checkCode(code);
-
+                float condition= Discount.checkCode(code);
                 if (condition<0){
                     txtConfirmMessage.setText("Mã của bạn không hợp lê");
                 }else {
@@ -91,17 +93,10 @@ public class PayDialog extends Dialog  {
 
     }
 
-    private float checkCode(String code) {
-        if(code.equals("vinh")){
-            return 15000;
-        }else if(code.equals("mei")) {
-            return 0.2f;
-        }
 
-        return -1.f;
-    }
 
     public interface IShutDownOrder{
+
         void shutDown();
     }
 }

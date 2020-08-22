@@ -4,7 +4,7 @@ public class Table {
     public final static int STATUS_AVAILABLE=1;
     public final static int STATUS_PROCESSING=2;
     public final static int STATUS_UNFINISHED=3;
-
+    private String key;
     private String name;
     private int status;
     private   String lastChange;
@@ -18,6 +18,21 @@ public class Table {
     }
 
     public Table(String name, int status, String lastChange) {
+        this.name = name;
+        this.status = status;
+        this.lastChange = lastChange;
+    }
+
+    public String getKey() {
+        return key;
+    }
+
+    public void setKey(String key) {
+        this.key = key;
+    }
+
+    public Table(String key, String name, int status, String lastChange) {
+        this.key = key;
         this.name = name;
         this.status = status;
         this.lastChange = lastChange;
@@ -45,5 +60,10 @@ public class Table {
 
     public void setStatus(int status) {
         this.status = status;
+    }
+
+    @Override
+    public String toString() {
+        return name;
     }
 }

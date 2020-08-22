@@ -1,12 +1,13 @@
 package com.example.vcafe.order.model;
 
 public class Item {
-    private int id;
-    private String name;
-    private String img_link;
-    private int price;
-    private String category;
-    private String description;
+    protected int id;
+    protected String name;
+    protected String img_link;
+    protected int price;
+    protected int discountMoney;
+    protected String category;
+    protected String description;
 
 
     public String getCategory() {
@@ -28,6 +29,16 @@ public class Item {
         this.description = description;
     }
 
+    public Item(int id, String name, String img_link, int price, int discountMoney, String category, String description) {
+        this.id = id;
+        this.name = name;
+        this.img_link = img_link;
+        this.price = price;
+        this.discountMoney = discountMoney;
+        this.category = category;
+        this.description = description;
+    }
+
     public Item(int id, String name, String img_link, int price, String category, String description) {
         this.id = id;
         this.name = name;
@@ -35,6 +46,14 @@ public class Item {
         this.price = price;
         this.category = category;
         this.description = description;
+    }
+
+    public int getDiscountMoney() {
+        return discountMoney;
+    }
+
+    public void setDiscountMoney(int discountMoney) {
+        this.discountMoney = discountMoney;
     }
 
     public int getId() {

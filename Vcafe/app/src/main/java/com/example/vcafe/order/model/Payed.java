@@ -3,12 +3,13 @@ package com.example.vcafe.order.model;
 import java.util.Date;
 
 public class Payed {
+    private String code;
     private String stuff;
-    private String date;
+    private Date date;
     private String customer;
     private int service_charge;
 
-    public Payed(String stuff, String date, String customer, int service_charge) {
+    public Payed(String stuff, Date date, String customer, int service_charge) {
         this.stuff = stuff;
         this.date = date;
         this.customer = customer;
@@ -16,6 +17,22 @@ public class Payed {
     }
 
     public Payed() {
+    }
+
+    public Payed(String code, String stuff, Date date, String customer, int service_charge) {
+        this.code = code;
+        this.stuff = stuff;
+        this.date = date;
+        this.customer = customer;
+        this.service_charge = service_charge;
+    }
+
+    public String getCode() {
+        return code;
+    }
+
+    public void setCode(String code) {
+        this.code = code;
     }
 
     public String getStuff() {
@@ -26,11 +43,11 @@ public class Payed {
         this.stuff = stuff;
     }
 
-    public String getDate() {
+    public Date getDate() {
         return date;
     }
 
-    public void setDate(String date) {
+    public void setDate(Date date) {
         this.date = date;
     }
 

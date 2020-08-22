@@ -59,7 +59,7 @@ public class MenuRecyclerViewAdapter extends RecyclerView.Adapter<MenuRecyclerVi
                 .diskCacheStrategy(DiskCacheStrategy.RESOURCE)
                 .into( anh);
         ten.setText(item.getName());
-        gia.setText(new VieMoney().change(item.getPrice()) );
+        gia.setText(new VieMoney().change(item.getPrice()-item.getDiscountMoney()) );
 
     }
 

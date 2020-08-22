@@ -66,7 +66,7 @@ public class CardRecyclerViewAdapter extends RecyclerView.Adapter<RecyclerView.V
                 .load(item.getImg_link())
                 .into( anh);
         ten.setText(item.getName());
-        gia.setText(new VieMoney().change(item.getPrice()));
+        gia.setText(new VieMoney().change(item.getPrice()-item.getDiscountMoney()));
         ghiChu.setText(item.getNote());
         soLuong.setText("x"+item.getQuantity());
 

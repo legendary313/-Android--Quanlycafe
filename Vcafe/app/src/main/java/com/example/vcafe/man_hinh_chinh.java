@@ -18,6 +18,7 @@ import android.widget.Toast;
 
 import com.example.vcafe.order.ListOrderActivity;
 
+import com.example.vcafe.order.OrderActivity;
 import com.example.vcafe.order.TableActivity;
 
 import com.google.android.material.navigation.NavigationView;
@@ -180,7 +181,7 @@ public class man_hinh_chinh extends AppCompatActivity {
     }
 
     private void openOrderActivity() {
-        Intent intent = new Intent(this, ListOrderActivity.class);
+        Intent intent = new Intent(this, OrderActivity.class);
         startActivity(intent);
     }
 

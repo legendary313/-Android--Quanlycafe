@@ -4,7 +4,7 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.EditText;
+
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -14,8 +14,10 @@ import androidx.recyclerview.widget.RecyclerView.ViewHolder;
 import com.example.vcafe.R;
 import com.example.vcafe.order.OrderActivity;
 import com.example.vcafe.order.fragment.BillFragment;
+
 import com.example.vcafe.order.model.Bill;
 import com.example.vcafe.order.model.Calculator;
+import com.example.vcafe.order.model.Data;
 import com.example.vcafe.order.model.OrderItem;
 import com.example.vcafe.order.model.VieMoney;
 
@@ -73,19 +75,24 @@ public class BillRecyclerViewAdapter extends RecyclerView.Adapter<RecyclerView.V
             holder2.tenNhanVien.setText("Nhân viên: "+"Trà mie");
 
             android.text.format.DateFormat df = new android.text.format.DateFormat();
-            BillFragment.date=df.format("yyyy-MM-dd hh:mm:ss a", new java.util.Date()).toString();
-
-
+            BillFragment.date= new java.util.Date();
+            String strDate=   df.format("yyyy-MM-dd hh:mm:ss a", BillFragment.date).toString();
 
             android.text.format.DateFormat.format("yyyy-MM-dd hh:mm:ss a", new java.util.Date());
 
-            holder2.ngayOrder.setText("Thời gian: "+BillFragment.date);
+            holder2.ngayOrder.setText("Thời gian: "+strDate);
 
         }else if(getItemViewType(position)==TYPE_FOOTER){
             ViewHolderFooter holder3=(ViewHolderFooter) holder;
-            holder3.giamGia.setText(  String.format("%s",new VieMoney().change(Calculator.totalMoney(OrderActivity.orders))));
-            holder3.tongTien.setText(  String.format("%s",new VieMoney().change(Calculator.totalMoney(OrderActivity.orders))));
-            BillFragment.total=Calculator.totalMoney(OrderActivity.orders);
+            int tongTien=Calculator.totalMoney(OrderActivity.orders);
+            int giamGia= (Data.payDiscount.getMoneyDiscout(tongTien));
+            holder3.giamGia.setText(  String.format("- %s",new VieMoney().change(giamGia)));
+
+
+            holder3.tongTien.setText(  String.format("%s",new VieMoney().change(tongTien)));
+
+            BillFragment.total=Calculator.totalMoney(OrderActivity.orders)-giamGia;
+            holder3.phaiTra.setText(  String.format("%s",new VieMoney().change(BillFragment.total)));
 
         }
         else {
@@ -100,10 +107,10 @@ public class BillRecyclerViewAdapter extends RecyclerView.Adapter<RecyclerView.V
 
 
             ten.setText(item.getName());
-            gia.setText(new VieMoney().change(item.getPrice()));
+            gia.setText(new VieMoney().change(item.getPrice()-item.getDiscountMoney()));
             soLuong.setText("x"+item.getQuantity());
 
-            tongTien.setText(new VieMoney().change(item.getPrice()*item.getQuantity()));
+            tongTien.setText(new VieMoney().change( (item.getPrice()-item.getDiscountMoney())*item.getQuantity()));
 
         }
 
@@ -158,12 +165,13 @@ public class BillRecyclerViewAdapter extends RecyclerView.Adapter<RecyclerView.V
 
         private TextView tongTien;
         private TextView giamGia;
+        private TextView phaiTra;
         CardRecyclerViewAdapter.OnItemOrderClickListener onItemOrderClickListener;
 
         public ViewHolderFooter(View itemView ) {
             super(itemView);
 
-
+            phaiTra=(TextView)itemView.findViewById(R.id.txtv_bill_final_total);
             tongTien=(TextView)itemView.findViewById(R.id.txtv_bill_total_order);
             giamGia =(TextView)itemView.findViewById(R.id.txtv_bill_discount);
         }
