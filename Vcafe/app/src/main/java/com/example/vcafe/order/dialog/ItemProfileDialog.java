@@ -8,6 +8,7 @@ import android.widget.TextView;
 import com.bumptech.glide.Glide;
 import com.example.vcafe.R;
 import com.example.vcafe.order.model.Item;
+import com.example.vcafe.order.model.VieMoney;
 
 public class ItemProfileDialog extends Dialog {
     Item drink_item;
@@ -31,7 +32,7 @@ public class ItemProfileDialog extends Dialog {
                 .load(drink_item.getImg_link())
                 .into( dialogAnh);
         dialogTen.setText(  drink_item.getName());
-        dialogGia.setText(  drink_item.getPrice()+"");
+        dialogGia.setText( new VieMoney().change( drink_item.getPrice()) );
         dialogMoTa.setText(  drink_item.getDescription());
 
 

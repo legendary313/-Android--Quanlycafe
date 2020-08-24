@@ -12,6 +12,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import androidx.recyclerview.widget.RecyclerView.ViewHolder;
 
 import com.example.vcafe.R;
+import com.example.vcafe.man_hinh_chinh;
 import com.example.vcafe.order.OrderActivity;
 import com.example.vcafe.order.fragment.BillFragment;
 
@@ -71,8 +72,8 @@ public class BillRecyclerViewAdapter extends RecyclerView.Adapter<RecyclerView.V
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         if(getItemViewType(position)==TYPE_HEADER){
             ViewHolderHeader holder2=(ViewHolderHeader) holder;
-            holder2.kieuOrder.setText("Bàn số: "+"ORDER");
-            holder2.tenNhanVien.setText("Nhân viên: "+"Trà mie");
+            holder2.kieuOrder.setText("Bàn số: "+OrderActivity.tableName);
+            holder2.tenNhanVien.setText("Nhân viên: "+ man_hinh_chinh.nhanviensudung);
 
             android.text.format.DateFormat df = new android.text.format.DateFormat();
             BillFragment.date= new java.util.Date();

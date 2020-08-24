@@ -10,6 +10,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 
@@ -34,6 +35,7 @@ public class TableCombineDialog extends Dialog {
     private List<Table> tables;
     private ArrayAdapter adapter;
     private Table currentTable;
+    int currentStatus;
     List<OrderItem> currentOrders=new ArrayList<>();
     List<OrderItem> chossenOrders=new ArrayList<>();
 
@@ -46,15 +48,19 @@ public class TableCombineDialog extends Dialog {
         setContentView(R.layout.dialog_table_combine);
         this.tables=tables;
         this.currentTable=currentTable;
+        currentStatus=currentTable.getStatus();
 
 
     }
     public void setUp(){
-        for(int i=0;i<tables.size();i++){
-            TableActivity.updateTableStatus(tables.get(i).getKey(),Table.STATUS_PROCESSING);
+        show();
+        if (tables.size()==0){
+            TableActivity.updateTableStatus(currentTable.getKey(),currentStatus);
+            Toast.makeText(getContext(),"HIỆN CÁC BÀN ĐANG BẬN!",Toast.LENGTH_SHORT).show();
+            dismiss();
         }
         for(int i=0;i<tables.size();i++){
-            Log.i("CHECK-DATA","STATUS "+tables.get(i).getStatus());
+            TableActivity.updateTableStatus(tables.get(i).getKey(),Table.STATUS_PROCESSING);
         }
 
 
@@ -72,7 +78,6 @@ public class TableCombineDialog extends Dialog {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
                 Table chossen= (Table) spinner.getSelectedItem();
-
 
                 chossenOrders.clear();
                 DatabaseReference myRef= FirebaseDatabase.getInstance().getReference();
@@ -101,9 +106,11 @@ public class TableCombineDialog extends Dialog {
             @Override
             public void onClick(View view) {
                 //
+                TableActivity.updateTableStatus(currentTable.getKey(),currentStatus);
                 for(int i=0;i<tables.size();i++){
                     TableActivity.updateTableStatus(tables.get(i).getKey(),tables.get(i).getStatus());
                 }
+
                 dismiss();
             }
         });
@@ -168,9 +175,7 @@ public class TableCombineDialog extends Dialog {
                         TableActivity.updateTableStatus(tables.get(i).getKey(),tables.get(i).getStatus());
                     }
                 }
-                for(int i=0;i<tables.size();i++){
-                    Log.i("CHECK-DATA","STATUS "+tables.get(i));
-                }
+
                 //đổi lại bàn đang chọn
                 TableActivity.updateTableStatus(currentTable.getKey(),Table.STATUS_AVAILABLE);
 
@@ -179,7 +184,9 @@ public class TableCombineDialog extends Dialog {
                 dismiss();
             }
         });
-
-
     }
+
+
+
+
 }

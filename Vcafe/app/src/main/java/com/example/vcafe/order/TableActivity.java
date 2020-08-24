@@ -81,7 +81,7 @@ public class TableActivity extends AppCompatActivity implements TableRecyclerVie
         mDialog.setTitle("Đang tải các bàn");
         mDialog.setCanceledOnTouchOutside(false);
         mDialog.show();
-        Log.i("CHECK-DATA","HELLO!");
+
         DatabaseReference myRef=database.getReference();
         myRef.addListenerForSingleValueEvent(new ValueEventListener() {
             public void onDataChange(DataSnapshot dataSnapshot) {
@@ -159,7 +159,7 @@ public class TableActivity extends AppCompatActivity implements TableRecyclerVie
         }
 
 
-        updateTableStatus(tables.get(position).getKey(),Table.STATUS_PROCESSING);
+
         for (int i=0;i<tables.size();i++){
             if(tables.get(i).getStatus()!=Table.STATUS_PROCESSING &&i!=position){
                 Table iTable=new Table();
@@ -167,17 +167,15 @@ public class TableActivity extends AppCompatActivity implements TableRecyclerVie
                 iTable.setName(tables.get(i).getName());
                 iTable.setStatus(tables.get(i).getStatus());
                 tablesAvaiable.add(iTable);
-
-
-
             }
         }
         TableCombineDialog mDialog=new TableCombineDialog(this,tablesAvaiable,tables.get(position));
+        updateTableStatus(tables.get(position).getKey(),Table.STATUS_PROCESSING);
         mDialog.getWindow().setLayout(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
         mDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
-
+        mDialog.setCancelable(false);
         mDialog.setUp();
-        mDialog.show();
+
 
     }
 
@@ -196,4 +194,5 @@ public class TableActivity extends AppCompatActivity implements TableRecyclerVie
         myRef.child(Child.FB_ROOT_TABLE).child(tableKey).child("status").setValue(status);
 
     }
+
 }

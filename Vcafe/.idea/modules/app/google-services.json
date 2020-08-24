@@ -8,6 +8,43 @@
   "client": [
     {
       "client_info": {
+        "mobilesdk_app_id": "1:614694576380:android:02f142ffd19dabdd117779",
+        "android_client_info": {
+          "package_name": "com.example.testtmewatcher"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "614694576380-0n07dr203t3oakkn7a0ltovr19ogll7a.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.testtmewatcher",
+            "certificate_hash": "e5ce467d2efe4ce1e3c4c92a33c8f314fbedd431"
+          }
+        },
+        {
+          "client_id": "614694576380-tqs1pbu9tdr3nnr26tbm0b49d2ah52gk.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBkLoOGt5TGY-yFkA1C4TiYK4ap_FF2gwQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "614694576380-tqs1pbu9tdr3nnr26tbm0b49d2ah52gk.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
         "mobilesdk_app_id": "1:614694576380:android:3c90c53e60925efe117779",
         "android_client_info": {
           "package_name": "com.example.vcafe"

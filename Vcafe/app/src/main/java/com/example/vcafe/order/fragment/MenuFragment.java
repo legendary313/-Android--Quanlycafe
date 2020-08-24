@@ -28,7 +28,7 @@ import com.example.vcafe.order.model.OrderItem;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.tabs.TabLayout;
 
-public class MenuFragment extends Fragment implements IUpdateView {
+public class MenuFragment extends Fragment   {
     private ViewPager viewPager=null;
     private MenuViewpagerAdapter menu_viewpager_adapter;
     private FloatingActionButton floatingActionButton;
@@ -71,8 +71,5 @@ public class MenuFragment extends Fragment implements IUpdateView {
 
     }
 
-    @Override
-    public void updateView() {
-        menu_viewpager_adapter.notifyDataSetChanged();
-    }
+
 }

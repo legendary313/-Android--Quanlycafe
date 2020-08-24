@@ -66,15 +66,25 @@ public class OrderActivity extends AppCompatActivity implements PayDialog.IShutD
             @Override
             protected void onPostExecute(Object o) {
                 super.onPostExecute(o);
+                //find view
+
+                bottomNavigationView=(BottomNavigationView)findViewById(R.id.bt_nav_view);
+                bottomNavigationView.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
+
+                fm.beginTransaction().add(R.id.nav_host_fragment, fragment3, "3").hide(fragment3).commit();
+                fm.beginTransaction().add(R.id.nav_host_fragment, fragment2, "2").hide(fragment2).commit();
+                fm.beginTransaction().add(R.id.nav_host_fragment,fragment1, "1").commit();
+
 
                 mDialog.dismiss();
+
             }
         };
 
         asyncTask.execute();
         if(Data.getMenu().size()==0||Data.getMenu()==null){
             Data.loadData();
-            ((MenuFragment)fragment1).updateView();
+
         }
 
 
@@ -87,19 +97,6 @@ public class OrderActivity extends AppCompatActivity implements PayDialog.IShutD
         }else {
             tableName="ORDER";
         }
-
-
-        //find view
-
-        bottomNavigationView=(BottomNavigationView)findViewById(R.id.bt_nav_view);
-        bottomNavigationView.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
-
-        fm.beginTransaction().add(R.id.nav_host_fragment, fragment3, "3").hide(fragment3).commit();
-        fm.beginTransaction().add(R.id.nav_host_fragment, fragment2, "2").hide(fragment2).commit();
-        fm.beginTransaction().add(R.id.nav_host_fragment,fragment1, "1").commit();
-
-
-
 
     }
 
@@ -139,7 +136,6 @@ public class OrderActivity extends AppCompatActivity implements PayDialog.IShutD
             switch (item.getItemId()) {
                 case R.id.navigation_menu:
                     fm.beginTransaction().hide(active).show(fragment1).commit();
-
                     active = fragment1;
                     return true;
 

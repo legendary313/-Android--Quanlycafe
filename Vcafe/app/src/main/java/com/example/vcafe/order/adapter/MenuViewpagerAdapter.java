@@ -5,12 +5,13 @@ import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentStatePagerAdapter;
 
 import com.example.vcafe.order.fragment.MenuItemCategoryFragment;
+import com.example.vcafe.order.model.IUpdateView;
 import com.example.vcafe.order.model.ItemCategory;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class MenuViewpagerAdapter extends FragmentStatePagerAdapter {
+public class MenuViewpagerAdapter extends FragmentStatePagerAdapter   {
     private List<ItemCategory> menu;
     private final List<MenuItemCategoryFragment> fragments=new ArrayList<>();
 
@@ -41,4 +42,6 @@ public class MenuViewpagerAdapter extends FragmentStatePagerAdapter {
     public CharSequence getPageTitle(int position) {
        return menu.get(position).getCategory();
     }
+
+
 }

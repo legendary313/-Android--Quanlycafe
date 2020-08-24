@@ -18,11 +18,12 @@ import com.example.vcafe.R;
 import com.example.vcafe.order.dialog.ItemProfileDialog;
 import com.example.vcafe.order.OrderActivity;
 import com.example.vcafe.order.adapter.MenuRecyclerViewAdapter;
+import com.example.vcafe.order.model.IUpdateView;
 import com.example.vcafe.order.model.Item;
 
 import java.util.List;
 
-public class MenuItemCategoryFragment extends Fragment implements MenuRecyclerViewAdapter.OnItemOrderClickListener{
+public class MenuItemCategoryFragment extends Fragment implements MenuRecyclerViewAdapter.OnItemOrderClickListener  {
     OrderActivity main;
     Context context = null;
     private List<Item> list;
@@ -85,4 +86,6 @@ public class MenuItemCategoryFragment extends Fragment implements MenuRecyclerVi
         itemProfileDialog.show();
 
     }
+
+
 }

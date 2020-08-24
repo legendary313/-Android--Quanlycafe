@@ -36,7 +36,9 @@ ver1.3  - Dời/gọp bàn (lasted)
 ver1.4 
 		-Hoàn tất phần discount 
 		-Thêm phần search item  
-ver 1.5 (Dự định sửa cho đẹp hơn và nhiều thứ cần thiết hơn)	 
+ver 1.5  
+	- Fix cái bug load menu
+	- Chỉnh lại tiểu tiết
 
 		 
 				
