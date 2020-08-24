@@ -33,9 +33,10 @@ ver 1.2:  -Thay đổi kiến trúc + giao diện
 		  
 ver1.3  - Dời/gọp bàn (lasted)
 
-ver1.4(Dự định)
-		-Hoàn tất phần discount(Còn code)
-		-Thêm phần search item  (Chưa xong)	 
+ver1.4 
+		-Hoàn tất phần discount 
+		-Thêm phần search item  
+ver 1.5 (Dự định sửa cho đẹp hơn và nhiều thứ cần thiết hơn)	 
 
 		 
 				

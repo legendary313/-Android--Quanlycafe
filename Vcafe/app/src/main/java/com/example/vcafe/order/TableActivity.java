@@ -191,7 +191,7 @@ public class TableActivity extends AppCompatActivity implements TableRecyclerVie
 
     public static void updateTableStatus(String tableKey,int status){
         final DatabaseReference myRef=FirebaseDatabase.getInstance().getReference();
-
+        myRef.child(Child.FB_ROOT_TABLE).child(tableKey).child("lastChange").setValue("trà mie");
         myRef.child(Child.FB_ROOT_TABLE).child(tableKey).child("status").setValue(status);
 
     }

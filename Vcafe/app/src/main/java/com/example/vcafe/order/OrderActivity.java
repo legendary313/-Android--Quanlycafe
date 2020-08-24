@@ -181,10 +181,11 @@ public class OrderActivity extends AppCompatActivity implements PayDialog.IShutD
             }
             orders.clear();
             TableOrder tableOrder=new TableOrder();
+
             tableOrder.orders=orders;
             tableOrder.setTableKey(tableKey);
             DatabaseReference myRef=FirebaseDatabase.getInstance().getReference();
-            myRef.child("TABLE_ORDER").child(tableKey).setValue(tableOrder);
+            myRef.child(Child.FB_ROOT_TABLE_ORDER).child(tableKey).setValue(tableOrder);
             TableActivity.updateTableStatus(tableKey,Table.STATUS_AVAILABLE);
 
 

@@ -23,7 +23,7 @@
         </activity>
         <activity android:name=".order.OrderActivity"/>
         <activity android:name=".order.TableActivity"/>
-
+        <activity android:name=".order.SearchItemActivity"/>
 
         <meta-data
             android:name="preloaded_fonts"

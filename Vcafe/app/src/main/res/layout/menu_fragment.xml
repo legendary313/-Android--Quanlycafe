@@ -29,4 +29,17 @@
 
     </LinearLayout>
 
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fl_btn_search_item"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="30dp"
+        android:src="@android:drawable/ic_menu_search"
+        android:backgroundTint="@color/tableAvailabe"
+        android:tint="#000000"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentBottom="true"
+   />
+
 </RelativeLayout>

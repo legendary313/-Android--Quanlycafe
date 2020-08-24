@@ -23,7 +23,7 @@ import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.Date;
 
-public class PayDialog extends Dialog  {
+public class PayDialog extends Dialog implements Discount.ICodeDiscount, View.OnClickListener {
     private Payed payed;
 
 
@@ -65,38 +65,51 @@ public class PayDialog extends Dialog  {
 
             }
         });
-        btnConfirmCode.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                String code=edtCode.getText().toString();
-                float condition= Discount.checkCode(code);
-                if (condition<0){
-                    txtConfirmMessage.setText("Mã của bạn không hợp lê");
-                }else {
-                    edtCode.setEnabled(false);
-                    btnConfirmCode.setEnabled(false);
-                    if(condition>1){
-                        payed.setService_charge(payed.getService_charge()-(int)(condition));
-                        txtConfirmMessage.setText("Mã của bạn được giảm "+new VieMoney().change((int)condition).toString());
-                    }else {
-                        payed.setService_charge((int)(payed.getService_charge()*(1-condition)));
-                        txtConfirmMessage.setText("Mã của bạn được giảm "+(int)condition*100 +"%");
-                    }
-                    txtCharge.setText(payed.getService_charge()+"");
 
-                }
-
-                //sửa lại view và payed
-            }
-        });
-        txtCharge.setText(payed.getService_charge()+"");
+        btnConfirmCode.setOnClickListener(this);
+        txtCharge.setText(new VieMoney().change(payed.getService_charge()));
 
     }
 
+    @Override
+    public void getDiscount(String code ,int money, int percent) {
+        if (money>0){
+            edtCode.setEnabled(false);
+            btnConfirmCode.setEnabled(false);
+            payed.setService_charge(payed.getService_charge()-money);
+            txtConfirmMessage.setText("Mã của bạn được giảm "+new VieMoney().change(money));
+            payed.setCode(code);
+            txtCharge.setText(new VieMoney().change(payed.getService_charge()));
+            return;
+
+        }else if(percent>0) {
+            edtCode.setEnabled(false);
+            btnConfirmCode.setEnabled(false);
+            int tienGiam=(payed.getService_charge()*percent)/100;
+            payed.setService_charge((int)(payed.getService_charge()-tienGiam));
+            txtConfirmMessage.setText("Mã của bạn được giảm "+percent +"%");
+            payed.setCode(code);
+            txtCharge.setText(new VieMoney().change(payed.getService_charge()));
+                return;
+            }
+        txtConfirmMessage.setText("Mã không hợp lệ!");
+
+    }
+
+    @Override
+    public void onClick(View view) {
+        if(view.getId()==R.id.btn_pay_confirm){
+            String code=edtCode.getText().toString();
+            Discount.checkCode(code,  this);
+        }
+
+
+    }
 
 
     public interface IShutDownOrder{
-
         void shutDown();
     }
+
+
 }

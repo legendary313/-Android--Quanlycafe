@@ -7,4 +7,5 @@ public class Child {
     public static final String FB_ROOT_TABLE = "TABLE";
     public static final String FB_ROOT_TABLE_ORDER = "TABLE_ORDER";
     public static final String FB_ROOT_DISCOUNT = "DISCOUNT";
+    public static final String FB_ROOT_DISCOUNT_CODE = "DISCOUNT/CODE";
 }
