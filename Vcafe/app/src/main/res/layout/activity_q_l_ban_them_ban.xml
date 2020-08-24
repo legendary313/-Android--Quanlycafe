@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".QLBan_them_ban"
+    android:gravity="center_horizontal"
+    android:orientation="vertical">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="?attr/colorPrimary"
+        android:theme="@style/ThemeOverlay.AppCompat.ActionBar"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30sp"
+        android:text="Thêm Bàn"
+        android:textStyle="bold"
+        android:textColor="#131F63"
+        android:textSize="24sp"/>
+
+    <EditText
+        android:id="@+id/them_ten_ban"
+        android:layout_width="235dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30sp"
+        android:layout_centerHorizontal="true"
+        android:singleLine="true"
+        android:maxLines="1"
+        android:hint="Tên bàn" />
+
+
+
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/them_ten_ban"
+        android:layout_marginTop="30dp"
+        android:orientation="horizontal"
+        android:layout_centerHorizontal="true">
+
+        <Button
+            android:id="@+id/nut_xac_nhan_them_ban"
+            android:background="?android:attr/selectableItemBackground"
+            android:drawableLeft="@drawable/check"
+            android:drawablePadding="10sp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentBottom="true"
+            android:text="Thêm" />
+    </LinearLayout>
+</LinearLayout>

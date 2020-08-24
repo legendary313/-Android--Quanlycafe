@@ -118,16 +118,7 @@
 
                         </LinearLayout>
 
-                        <Button
-                            android:drawableTop="@drawable/chart"
-                            android:drawablePadding="15sp"
-                            android:background="?android:attr/selectableItemBackground"
-                            android:id="@+id/nut_chuc_nang_thong_ke"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginBottom="20sp"
-                            android:layout_gravity="center_horizontal"
-                            android:text="Thống kê" />
+
                     </LinearLayout>
                 </ScrollView>
             </LinearLayout>

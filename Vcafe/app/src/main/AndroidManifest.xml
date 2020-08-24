@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.vcafe">
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
 
     <application
         android:allowBackup="true"
@@ -24,7 +25,17 @@
         <activity android:name=".order.OrderActivity"/>
         <activity android:name=".order.TableActivity"/>
         <activity android:name=".order.SearchItemActivity"/>
-
+        <activity android:name=".QLNuocUong_sua_nuoc"></activity>
+        <activity android:name=".QLNuocUong_them_nuoc" />
+        <activity android:name=".Quan_ly_nuoc_uong" />
+        <activity android:name=".QLBan_sua_ban" />
+        <activity android:name=".QLBan_them_ban" />
+        <activity android:name=".Quan_ly_ban" />
+        <activity android:name=".ThongKeBanHang" />
+        <activity android:name=".QLNV_sua_nv" />
+        <activity android:name=".QLNV_them_nv" />
+        <activity android:name=".Quan_ly_nhan_vien" />
+        <activity android:name=".Quan_ly_chung" />
         <meta-data
             android:name="preloaded_fonts"
             android:resource="@array/preloaded_fonts" />

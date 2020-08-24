@@ -14,6 +14,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.vcafe.R;
+import com.example.vcafe.man_hinh_chinh;
 import com.example.vcafe.order.OrderActivity;
 import com.example.vcafe.order.adapter.BillRecyclerViewAdapter;
 import com.example.vcafe.order.adapter.CardRecyclerViewAdapter;
@@ -45,12 +46,13 @@ public class BillFragment extends Fragment implements IUpdateView {
             public void onClick(View view) {
 
                 payed.setDate(date); //format
-                payed.setStuff("Trà mie"); //lấy data
+                payed.setStuff(man_hinh_chinh.nhanviensudung); //lấy data
                 payed.setService_charge(total);
                 payed.setCustomer(""); //lấy từ edit text
                 PayDialog payDialog=new PayDialog(getContext(),(OrderActivity)getActivity(),payed);
                 payDialog.setUp();
                 payDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+                payDialog.setCanceledOnTouchOutside(false);
                 payDialog.show();
             }
         });

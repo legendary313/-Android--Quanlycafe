@@ -6,4 +6,6 @@
     <color name="tableAvailabe">#FFFFFF</color>
     <color name="tableProccessing">#EC463A</color>
     <color name="tableUnfinished">#4CAF50</color>
+    <color name="tableAnotherChange">#00BCD4</color>
+    tableAnotherChange
     </resources>

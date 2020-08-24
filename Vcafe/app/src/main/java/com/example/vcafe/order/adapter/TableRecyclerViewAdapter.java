@@ -13,6 +13,7 @@ import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.vcafe.R;
+import com.example.vcafe.man_hinh_chinh;
 import com.example.vcafe.order.model.Table;
 
 import java.util.ArrayList;
@@ -57,6 +58,11 @@ public class TableRecyclerViewAdapter  extends RecyclerView.Adapter<TableRecycle
             int color=ContextCompat.getColor(context , R.color.tableProccessing);
             holder.cvBackground.setCardBackgroundColor(color);
         } else if(status==Table.STATUS_UNFINISHED){
+            if(!table.getLastChange().equals(man_hinh_chinh.nhanviensudung)){
+                int color=ContextCompat.getColor(context , R.color.tableAnotherChange);
+                holder.cvBackground.setCardBackgroundColor(color);
+                return;
+            }
             int color=ContextCompat.getColor(context , R.color.tableUnfinished);
             holder.cvBackground.setCardBackgroundColor(color);
         }

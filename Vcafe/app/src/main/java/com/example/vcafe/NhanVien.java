@@ -2,7 +2,9 @@ package com.example.vcafe;
 
 import com.google.firebase.database.DatabaseReference;
 
-public class NhanVien {
+import java.io.Serializable;
+
+public class NhanVien implements Serializable {
     private String LoaiNV;
     private int Luong;
     private String MaNV;

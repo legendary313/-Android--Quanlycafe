@@ -50,8 +50,7 @@ public class MainActivity extends AppCompatActivity {
         mat_khau_dang_nhap = (EditText) findViewById(R.id.mat_khau_dang_nhap);
         progressBar = (ProgressBar) findViewById(R.id.progressBar);
         nut_dang_nhap = (Button) findViewById(R.id.nut_dang_nhap);
-        //Get Firebase auth instance
-        auth = FirebaseAuth.getInstance();
+
 
         nut_dang_nhap.setOnClickListener(new View.OnClickListener() {
             @Override

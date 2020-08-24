@@ -34,7 +34,7 @@ dependencies {
     implementation 'com.android.support:appcompat-v7:27.1.0'
     implementation 'com.android.support:design:27.1.0'
     implementation 'com.google.firebase:firebase-database:19.3.1'
-
+    implementation 'com.google.firebase:firebase-storage:19.1.0'
     //firebase UI
     implementation 'com.firebaseui:firebase-ui-database:6.3.0'
 

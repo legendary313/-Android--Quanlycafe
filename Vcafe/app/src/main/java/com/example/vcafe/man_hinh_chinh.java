@@ -1,6 +1,7 @@
 package com.example.vcafe;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
@@ -8,6 +9,7 @@ import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
@@ -16,23 +18,26 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.vcafe.order.ListOrderActivity;
-
 import com.example.vcafe.order.OrderActivity;
 import com.example.vcafe.order.TableActivity;
-
 import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.io.Console;
+import java.util.ArrayList;
+import java.util.List;
+
 
 public class man_hinh_chinh extends AppCompatActivity {
+    public static String nhanviensudung;
     private DrawerLayout menu_draw;
-    private Button nut_dang_xuat, nut_chuc_nang_tao_tai_khoan, nut_chuc_nang_thong_ke, nut_chuc_nang_order, nut_chuc_nang_quan_ly_chung, nut_chuc_nang_quan_ly_ban;
+    private Button nut_dang_xuat, nut_chuc_nang_tao_tai_khoan, nut_chuc_nang_order, nut_chuc_nang_quan_ly_chung, nut_chuc_nang_quan_ly_ban;
     private TextView textTenNV,textLoaiNV;
     private FirebaseAuth auth;
     private TaiKhoan tk = new TaiKhoan();
@@ -54,7 +59,6 @@ public class man_hinh_chinh extends AppCompatActivity {
         nut_chuc_nang_order = (Button) findViewById(R.id.nut_chuc_nang_order);
         nut_chuc_nang_quan_ly_ban = (Button) findViewById(R.id.nut_chuc_nang_quan_ly_ban);
         nut_chuc_nang_quan_ly_chung = (Button) findViewById(R.id.nut_chuc_nang_quan_ly_chung);
-        nut_chuc_nang_thong_ke = (Button) findViewById(R.id.nut_chuc_nang_thong_ke);
 
 
 
@@ -94,6 +98,7 @@ public class man_hinh_chinh extends AppCompatActivity {
             }
         });
 
+        //toolbar setup
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         ActionBar actionbar = getSupportActionBar();
@@ -148,13 +153,7 @@ public class man_hinh_chinh extends AppCompatActivity {
                 }
         );
 
-        //Setting cac nut chuc nang nhan vien
-        nut_chuc_nang_order.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                openOrderActivity();
-            }
-        });
+
 
 
         //Setting cac nut chuc nang admin
@@ -165,16 +164,29 @@ public class man_hinh_chinh extends AppCompatActivity {
             }
         });
 
-        //Setting cac nut chuc nang nhan vien
+        nut_chuc_nang_quan_ly_chung.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                openQuanLyChungActivity();
+            }
+        });
+
+
+
+        //Setting nut chuc nang nhan vien
+        nut_chuc_nang_order.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                openOrderActivity();
+            }
+        });
         nut_chuc_nang_quan_ly_ban.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 openTableActivity();
             }
         });
-
     }
-
     private void openTableActivity() {
         Intent intent = new Intent(this, TableActivity.class);
         startActivity(intent);
@@ -184,6 +196,12 @@ public class man_hinh_chinh extends AppCompatActivity {
         Intent intent = new Intent(this, OrderActivity.class);
         startActivity(intent);
     }
+    private void openQuanLyChungActivity() {
+        Intent intent = new Intent(this, Quan_ly_chung.class);
+        startActivity(intent);
+    }
+
+
 
     private void HienThiThongTinCaNhan(TaiKhoan tk) {
         //Lay thong tin ca nhan user
@@ -199,7 +217,6 @@ public class man_hinh_chinh extends AppCompatActivity {
                             textLoaiNV.setText("Admin");
                             nut_chuc_nang_tao_tai_khoan.setEnabled(true);
                             nut_chuc_nang_quan_ly_chung.setEnabled(true);
-                            nut_chuc_nang_thong_ke.setEnabled(true);
                         }
                         else
                         {
@@ -207,10 +224,10 @@ public class man_hinh_chinh extends AppCompatActivity {
                             textLoaiNV.setText("Nhân Viên");
                             nut_chuc_nang_tao_tai_khoan.setEnabled(false);
                             nut_chuc_nang_quan_ly_chung.setEnabled(false);
-                            nut_chuc_nang_thong_ke.setEnabled(false);
                         }
                         textTenNV = (TextView)findViewById(R.id.textTenNV);
                         textTenNV.setText(nv.getTenNV());
+                        nhanviensudung = nv.getTenNV();
                     }
             }
 

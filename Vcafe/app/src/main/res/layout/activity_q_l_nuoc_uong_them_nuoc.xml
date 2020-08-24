@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:gravity="center_horizontal"
+    tools:context=".QLNuocUong_them_nuoc">
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="?attr/colorPrimary"
+        android:theme="@style/ThemeOverlay.AppCompat.ActionBar"/>
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:gravity="center_horizontal">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30sp"
+            android:text="Thêm Nước Uống Mới"
+            android:textStyle="bold"
+            android:textColor="#131F63"
+            android:textSize="24sp"/>
+
+        <EditText
+            android:id="@+id/them_ten_nuoc"
+            android:layout_width="235dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30sp"
+            android:layout_centerHorizontal="true"
+            android:singleLine="true"
+            android:maxLines="1"
+            android:hint="Tên tên nước" />
+
+        <EditText
+            android:id="@+id/them_mota_nuoc"
+            android:layout_width="235dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/them_ten_nuoc"
+            android:layout_marginTop="30sp"
+            android:layout_centerHorizontal="true"
+            android:singleLine="true"
+            android:hint="Mô tả" />
+
+        <EditText
+            android:id="@+id/them_gia_nuoc"
+            android:layout_width="235dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/them_ten_nuoc"
+            android:layout_marginTop="30sp"
+            android:layout_centerHorizontal="true"
+            android:inputType="numberDecimal"
+            android:singleLine="true"
+            android:maxLines="1"
+            android:hint="Giá" />
+
+        <EditText
+            android:id="@+id/them_gia_discount"
+            android:layout_width="235dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/them_gia_nuoc"
+            android:layout_marginTop="30sp"
+            android:layout_centerHorizontal="true"
+            android:inputType="numberDecimal"
+            android:singleLine="true"
+            android:maxLines="1"
+            android:hint="Discount" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_below="@id/them_gia_discount"
+            android:layout_marginTop="30sp"
+            android:gravity="center">
+
+            <ImageView
+                android:layout_width="104dp"
+                android:layout_height="88dp"
+                android:id="@+id/anh_nuoc"/>
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="?android:attr/selectableItemBackground"
+                android:id="@+id/nut_chon_anh"
+                android:text="Chọn ảnh"/>
+
+        </LinearLayout>
+
+        <RadioGroup
+            android:id="@+id/radioButton_them_loai_nuoc"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/them_luong_nhan_vien"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="30sp"
+            android:orientation="vertical">
+
+            <RadioButton
+                android:id="@+id/them_cafe"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:checked="true"
+                android:text="Cà phê" />
+
+            <RadioButton
+                android:id="@+id/them_tratraicay"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Trà trái cây" />
+            <RadioButton
+                android:id="@+id/them_trsua"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Trà sữa" />
+            <RadioButton
+                android:id="@+id/them_traicay"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Trái cây" />
+        </RadioGroup>
+
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/them_luong_nhan_vien"
+            android:layout_marginTop="30dp"
+            android:orientation="horizontal"
+            android:layout_centerHorizontal="true">
+
+            <Button
+                android:id="@+id/nut_xac_nhan_them_nuoc"
+                android:background="?android:attr/selectableItemBackground"
+                android:drawableLeft="@drawable/check"
+                android:drawablePadding="10sp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentBottom="true"
+                android:text="Thêm" />
+        </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>

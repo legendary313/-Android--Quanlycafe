@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center_horizontal"
+    android:orientation="vertical"
+    tools:context=".QLNV_sua_nv">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="?attr/colorPrimary"
+        android:theme="@style/ThemeOverlay.AppCompat.ActionBar"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30sp"
+        android:text="Thông Tin Cá Nhân"
+        android:textStyle="bold"
+        android:textColor="#131F63"
+        android:textSize="24sp"/>
+
+    <EditText
+        android:id="@+id/sua_ten_nhan_vien"
+        android:layout_width="235dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30sp"
+        android:layout_centerHorizontal="true"
+        android:singleLine="true"
+        android:maxLines="1"
+        android:hint="Tên nhân viên" />
+
+    <EditText
+        android:id="@+id/sua_luong_nhan_vien"
+        android:layout_width="235dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/sua_ten_nhan_vien"
+        android:layout_marginTop="30sp"
+        android:layout_centerHorizontal="true"
+        android:inputType="numberDecimal"
+        android:singleLine="true"
+        android:maxLines="1"
+        android:hint="Lương nhân viên" />
+
+    <RadioGroup
+        android:id="@+id/radioButton_sua_loai_tai_khoan"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/sua_luong_nhan_vien"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="30sp"
+        android:orientation="horizontal">
+
+        <RadioButton
+            android:id="@+id/sua_taikhoanAdmin"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:checked="true"
+            android:text="Admin" />
+
+        <RadioButton
+            android:id="@+id/sua_taikhoanNhanVien"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="30sp"
+            android:text="Nhân Viên" />
+    </RadioGroup>
+
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/sua_luong_nhan_vien"
+        android:layout_marginTop="30dp"
+        android:orientation="horizontal"
+        android:layout_centerHorizontal="true">
+
+        <Button
+            android:id="@+id/nut_xac_nhan_sua"
+            android:background="?android:attr/selectableItemBackground"
+            android:drawableLeft="@drawable/check"
+            android:drawablePadding="10sp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentBottom="true"
+            android:text="Sửa" />
+
+        <Button
+            android:id="@+id/nut_huy_sua"
+            android:background="?android:attr/selectableItemBackground"
+            android:drawableLeft="@drawable/refresh"
+            android:drawablePadding="5sp"
+            android:layout_marginLeft="30sp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentBottom="true"
+            android:text="Nhập lại" />
+    </LinearLayout>
+</LinearLayout>

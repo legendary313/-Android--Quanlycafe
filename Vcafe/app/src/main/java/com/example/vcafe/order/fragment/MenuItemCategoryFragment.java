@@ -81,6 +81,7 @@ public class MenuItemCategoryFragment extends Fragment implements MenuRecyclerVi
         ItemProfileDialog itemProfileDialog=new ItemProfileDialog(getContext(),list.get(position));
         itemProfileDialog.setUp();
         itemProfileDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+        itemProfileDialog.setCanceledOnTouchOutside(false);
         itemProfileDialog.show();
 
     }

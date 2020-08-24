@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Quan_ly_chung">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="?attr/colorPrimary"
+            android:theme="@style/ThemeOverlay.AppCompat.ActionBar"/>
+
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingBottom= "25sp">
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+                <TextView
+                    android:id="@+id/textQuanLyChung"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="40sp"
+                    android:text="Quản lý thông tin"
+                    android:textColor="#131F63"
+                    android:textSize="24sp"
+                    android:textStyle="bold"
+                    android:layout_centerHorizontal="true"/>
+
+                <Button
+                    android:id="@+id/nut_chuc_nang_quan_ly_nvien"
+                    android:layout_width="235dp"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/textQuanLyChung"
+                    android:layout_marginTop="60sp"
+                    android:layout_centerHorizontal="true"
+                    android:drawableLeft="@drawable/manage_staffes"
+                    android:drawablePadding="15sp"
+                    android:background="?android:attr/selectableItemBackground"
+                    android:hint="Quản Lý Nhân Viên" />
+
+                <Button
+                    android:id="@+id/nut_chuc_nang_quan_ly_ds_nuoc_uong"
+                    android:layout_width="235dp"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/nut_chuc_nang_quan_ly_nvien"
+                    android:layout_marginTop="60sp"
+                    android:layout_centerHorizontal="true"
+                    android:drawableLeft="@drawable/categories_items"
+                    android:drawablePadding="15sp"
+                    android:background="?android:attr/selectableItemBackground"
+                    android:hint="Quản Lý Nước Uống" />
+
+                <Button
+                    android:id="@+id/nut_chuc_nang_quan_ly_ds_ban"
+                    android:layout_width="235dp"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/nut_chuc_nang_quan_ly_ds_nuoc_uong"
+                    android:layout_marginTop="60sp"
+                    android:layout_centerHorizontal="true"
+                    android:drawableLeft="@drawable/manage_table"
+                    android:drawablePadding="15sp"
+                    android:background="?android:attr/selectableItemBackground"
+                    android:hint="Quản Lý Bàn" />
+
+                <Button
+                    android:id="@+id/nut_chuc_nang_thong_ke_ls_banhang"
+                    android:layout_width="235dp"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/nut_chuc_nang_quan_ly_ds_ban"
+                    android:layout_marginTop="60sp"
+                    android:layout_centerHorizontal="true"
+                    android:drawableLeft="@drawable/manage_payed"
+                    android:drawablePadding="15sp"
+                    android:background="?android:attr/selectableItemBackground"
+                    android:hint="Thống kê lịch sử bán hàng" />
+
+            </RelativeLayout>
+        </ScrollView>
+    </LinearLayout>
+    <ProgressBar
+        android:id="@+id/progressBar"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_gravity="center|bottom"
+        android:layout_marginBottom="20dp"
+        android:layout_centerInParent="true"
+        android:visibility="gone" />
+
+</RelativeLayout>

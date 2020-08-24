@@ -31,7 +31,7 @@ public class OrderItem extends Item implements IChangeQuantity {
 
     }
 
-    public OrderItem(int id, String name, String img_link, int price, String category, String description, int quantity, String note) {
+    public OrderItem(String id, String name, String img_link, int price, String category, String description, int quantity, String note) {
         super(id, name, img_link, price, category, description);
         this.quantity = quantity;
         this.note = note;

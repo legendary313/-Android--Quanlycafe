@@ -72,6 +72,7 @@
                     android:id="@+id/taikhoanAdmin"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:checked="true"
                     android:text="Admin" />
 
                 <RadioButton
@@ -101,7 +102,6 @@
                 android:layout_below="@id/textThongTinCaNhan"
                 android:layout_marginTop="30sp"
                 android:layout_centerHorizontal="true"
-                android:inputType="textPassword"
                 android:singleLine="true"
                 android:maxLines="1"
                 android:hint="Tên nhân viên" />
@@ -118,19 +118,11 @@
                 android:maxLines="1"
                 android:hint="Lương nhân viên" />
 
-            <EditText
-                android:id="@+id/dang_ki_ngay_bat_dau"
-                android:layout_width="235dp"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/dang_ki_luong_nhan_vien"
-                android:layout_marginTop="30sp"
-                android:layout_centerHorizontal="true"
-                android:inputType="date"
-                android:hint="Ngày bắt đầu" />
+
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/dang_ki_ngay_bat_dau"
+                android:layout_below="@+id/dang_ki_luong_nhan_vien"
                 android:layout_marginTop="30dp"
                 android:orientation="horizontal"
                 android:layout_centerHorizontal="true">

@@ -1,7 +1,7 @@
 package com.example.vcafe.order.model;
 
 public class Item {
-    protected int id;
+    protected String id;
     protected String name;
     protected String img_link;
     protected int price;
@@ -29,7 +29,7 @@ public class Item {
         this.description = description;
     }
 
-    public Item(int id, String name, String img_link, int price, int discountMoney, String category, String description) {
+    public Item(String id, String name, String img_link, int price, int discountMoney, String category, String description) {
         this.id = id;
         this.name = name;
         this.img_link = img_link;
@@ -39,7 +39,7 @@ public class Item {
         this.description = description;
     }
 
-    public Item(int id, String name, String img_link, int price, String category, String description) {
+    public Item(String id, String name, String img_link, int price, String category, String description) {
         this.id = id;
         this.name = name;
         this.img_link = img_link;
@@ -56,11 +56,11 @@ public class Item {
         this.discountMoney = discountMoney;
     }
 
-    public int getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(String id) {
         this.id = id;
     }
 

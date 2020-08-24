@@ -23,6 +23,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 
 import com.example.vcafe.R;
+import com.example.vcafe.man_hinh_chinh;
 import com.example.vcafe.order.adapter.TableRecyclerViewAdapter;
 
 import com.example.vcafe.order.dialog.TableCombineDialog;
@@ -191,7 +192,7 @@ public class TableActivity extends AppCompatActivity implements TableRecyclerVie
 
     public static void updateTableStatus(String tableKey,int status){
         final DatabaseReference myRef=FirebaseDatabase.getInstance().getReference();
-        myRef.child(Child.FB_ROOT_TABLE).child(tableKey).child("lastChange").setValue("trà mie");
+        myRef.child(Child.FB_ROOT_TABLE).child(tableKey).child("lastChange").setValue(man_hinh_chinh.nhanviensudung);
         myRef.child(Child.FB_ROOT_TABLE).child(tableKey).child("status").setValue(status);
 
     }
