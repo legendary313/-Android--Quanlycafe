@@ -10,7 +10,7 @@ import android.view.View;
 import android.widget.Button;
 
 public class Quan_ly_chung extends AppCompatActivity {
-    Button nut_chuc_nang_quan_ly_nvien,nut_chuc_nang_tkbh,nut_chuc_nang_qlban,nut_chuc_nang_qlnuoc;
+    Button nut_chuc_nang_quan_ly_nvien,nut_chuc_nang_tkbh,nut_chuc_nang_qlban,nut_chuc_nang_qlnuoc,nut_chuc_nang_quan_ly_discount;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -36,7 +36,15 @@ public class Quan_ly_chung extends AppCompatActivity {
         nut_chuc_nang_tkbh = (Button) findViewById(R.id.nut_chuc_nang_thong_ke_ls_banhang);
         nut_chuc_nang_qlban = (Button) findViewById(R.id.nut_chuc_nang_quan_ly_ds_ban);
         nut_chuc_nang_qlnuoc = (Button) findViewById(R.id.nut_chuc_nang_quan_ly_ds_nuoc_uong);
+        nut_chuc_nang_quan_ly_discount = (Button) findViewById(R.id.nut_chuc_nang_quan_ly_discount);
 
+
+        nut_chuc_nang_quan_ly_discount.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                openQuanlyDiscountActivity();
+            }
+        });
         nut_chuc_nang_qlnuoc.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -62,6 +70,11 @@ public class Quan_ly_chung extends AppCompatActivity {
                 openQuanlynhanvienActivity();
             }
         });
+    }
+
+    private void openQuanlyDiscountActivity() {
+        Intent intent = new Intent(this, QuanLyDiscount.class);
+        startActivity(intent);
     }
 
     private void openQuanlyNuocActivity() {

@@ -36,7 +36,7 @@ public class ThongKeBanHang extends AppCompatActivity {
         ActionBar actionbar = getSupportActionBar();
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
-        actionbar.setIcon(R.drawable.management);
+        actionbar.setIcon(R.drawable.manage_payed);
         actionbar.setDisplayShowTitleEnabled(false);
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override

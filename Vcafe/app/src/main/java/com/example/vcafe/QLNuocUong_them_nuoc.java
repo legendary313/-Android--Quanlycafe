@@ -112,8 +112,22 @@ public class QLNuocUong_them_nuoc extends AppCompatActivity {
                 final NuocUong nuocMoi = new NuocUong();
                 nuocMoi.setName(them_tennuoc.getText().toString());
                 nuocMoi.setDescription(them_mota.getText().toString());
-                nuocMoi.setDiscountMoney(Integer.parseInt(them_discount.getText().toString()));
-                nuocMoi.setPrice(Integer.parseInt(them_gia_nuoc.getText().toString()));
+                if(!them_discount.getText().toString().equals(""))
+                {
+                    nuocMoi.setDiscountMoney(Integer.parseInt(them_discount.getText().toString()));
+                }
+                else{
+                    nuocMoi.setDiscountMoney(0);
+                }
+
+                if(!them_gia_nuoc.getText().toString().equals(""))
+                {
+                    nuocMoi.setPrice(Integer.parseInt(them_gia_nuoc.getText().toString()));
+                }
+                else
+                {
+                    nuocMoi.setPrice(0);
+                }
                 if(r_them_cafe.isChecked())
                 {
                     nuocMoi.setCategory("CÀ PHÊ");

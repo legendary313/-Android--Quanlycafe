@@ -59,7 +59,7 @@ public class Quan_ly_nhan_vien extends AppCompatActivity {
         ActionBar actionbar = getSupportActionBar();
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
-        actionbar.setIcon(R.drawable.management);
+        actionbar.setIcon(R.drawable.manage_staffes);
         actionbar.setDisplayShowTitleEnabled(false);
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override

@@ -40,7 +40,7 @@
                     android:layout_width="235dp"
                     android:layout_height="wrap_content"
                     android:layout_below="@id/textQuanLyChung"
-                    android:layout_marginTop="60sp"
+                    android:layout_marginTop="30sp"
                     android:layout_centerHorizontal="true"
                     android:drawableLeft="@drawable/manage_staffes"
                     android:drawablePadding="15sp"
@@ -52,7 +52,7 @@
                     android:layout_width="235dp"
                     android:layout_height="wrap_content"
                     android:layout_below="@id/nut_chuc_nang_quan_ly_nvien"
-                    android:layout_marginTop="60sp"
+                    android:layout_marginTop="30sp"
                     android:layout_centerHorizontal="true"
                     android:drawableLeft="@drawable/categories_items"
                     android:drawablePadding="15sp"
@@ -64,7 +64,7 @@
                     android:layout_width="235dp"
                     android:layout_height="wrap_content"
                     android:layout_below="@id/nut_chuc_nang_quan_ly_ds_nuoc_uong"
-                    android:layout_marginTop="60sp"
+                    android:layout_marginTop="30sp"
                     android:layout_centerHorizontal="true"
                     android:drawableLeft="@drawable/manage_table"
                     android:drawablePadding="15sp"
@@ -72,11 +72,23 @@
                     android:hint="Quản Lý Bàn" />
 
                 <Button
-                    android:id="@+id/nut_chuc_nang_thong_ke_ls_banhang"
+                    android:id="@+id/nut_chuc_nang_quan_ly_discount"
                     android:layout_width="235dp"
                     android:layout_height="wrap_content"
                     android:layout_below="@id/nut_chuc_nang_quan_ly_ds_ban"
-                    android:layout_marginTop="60sp"
+                    android:layout_marginTop="30sp"
+                    android:layout_centerHorizontal="true"
+                    android:drawableLeft="@drawable/discount_big"
+                    android:drawablePadding="15sp"
+                    android:background="?android:attr/selectableItemBackground"
+                    android:hint="Quản Lý Discount" />
+
+                <Button
+                    android:id="@+id/nut_chuc_nang_thong_ke_ls_banhang"
+                    android:layout_width="235dp"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/nut_chuc_nang_quan_ly_discount"
+                    android:layout_marginTop="30sp"
                     android:layout_centerHorizontal="true"
                     android:drawableLeft="@drawable/manage_payed"
                     android:drawablePadding="15sp"

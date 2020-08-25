@@ -38,7 +38,7 @@ public class QLNV_sua_nv extends AppCompatActivity {
         ActionBar actionbar = getSupportActionBar();
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
-        actionbar.setIcon(R.drawable.management);
+        actionbar.setIcon(R.drawable.manage_staffes);
         actionbar.setDisplayShowTitleEnabled(false);
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
@@ -103,6 +103,7 @@ public class QLNV_sua_nv extends AppCompatActivity {
             public void onClick(View view) {
                 NhanVien thongtinMoi = new NhanVien();
                 thongtinMoi.setTenNV(sua_tennv.getText().toString());
+                if(!(sua_luongnv.getText().toString().equals("")))
                 thongtinMoi.setLuong(Integer.parseInt(sua_luongnv.getText().toString()));
                 if(r_sua_tkAdmin.isChecked())
                 {

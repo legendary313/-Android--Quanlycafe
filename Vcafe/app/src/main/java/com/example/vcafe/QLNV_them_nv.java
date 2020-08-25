@@ -36,7 +36,7 @@ public class QLNV_them_nv extends AppCompatActivity {
         ActionBar actionbar = getSupportActionBar();
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
-        actionbar.setIcon(R.drawable.management);
+        actionbar.setIcon(R.drawable.manage_staffes);
         actionbar.setDisplayShowTitleEnabled(false);
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
@@ -64,7 +64,13 @@ public class QLNV_them_nv extends AppCompatActivity {
             public void onClick(View view) {
                 NhanVien nvMoi = new NhanVien();
                 nvMoi.setTenNV(them_tennv.getText().toString());
-                nvMoi.setLuong(Integer.parseInt(them_luongnv.getText().toString()));
+                if(!them_luongnv.getText().toString().equals(""))
+                {
+                    nvMoi.setLuong(Integer.parseInt(them_luongnv.getText().toString()));
+                }
+                else{
+                    nvMoi.setLuong(0);
+                }
                 if(r_them_tkAdmin.isChecked())
                 {
                     nvMoi.setLoaiNV("01");
